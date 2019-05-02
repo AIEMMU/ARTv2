@@ -614,7 +614,7 @@ namespace ARWT.Model.RBSK2
                     }
                 }
 
-                CvInvoke.Imwrite($"{i}_frame.png", frame);
+                //CvInvoke.Imwrite($"{i}_frame.png", frame);
                 currentFrame.FeetCollection = footCollection;
                 ProgressUpdates(this, new RBSKVideoUpdateEvent(0.5 + (((double)counter / newCount) / 2)));
             }

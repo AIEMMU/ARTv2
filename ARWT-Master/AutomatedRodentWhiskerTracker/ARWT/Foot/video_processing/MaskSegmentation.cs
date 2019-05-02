@@ -22,7 +22,7 @@ namespace ARWT.Foot.video_processing
 
             //mask = mask.Erode(7);
             var element = CvInvoke.GetStructuringElement(ElementShape.Rectangle, new Size(kernelSize, kernelSize), new Point(-1, -1));
-            CvInvoke.Imwrite($"mask_not_eroded{i:D4}.png", mask);
+            //CvInvoke.Imwrite($"mask_not_eroded{i:D4}.png", mask);
             CvInvoke.Erode(mask, mask, element, new Point(-1, -1), iterations, BorderType.Reflect, default(MCvScalar));
             CvInvoke.Multiply(mask, img, img);
             i++;
