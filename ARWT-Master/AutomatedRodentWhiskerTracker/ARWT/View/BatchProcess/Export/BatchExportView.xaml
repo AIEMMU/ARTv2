@@ -1,0 +1,183 @@
+﻿<Window x:Class="ARWT.View.BatchProcess.Export.BatchExportView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:behaviours="clr-namespace:ARWT.Behaviours"
+        Title="BatchExportView" Height="480" Width="640"
+        behaviours:WindowClosingBehavior.Close="{Binding Path=Close, Mode=TwoWay}">
+    <Window.Resources>
+        <Style TargetType="ComboBox">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <ListView Grid.Column="0" ItemsSource="{Binding Path=Videos}" DisplayMemberPath="Name" Margin="5">
+                
+            </ListView>
+            
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Velocity: "/>
+                <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+                    <ComboBox ItemsSource="{Binding Path=VelocityOptions}" SelectedItem="{Binding Path=SelectedVelocityOption, Mode=TwoWay}"/>
+                    <!--<ComboBox ItemsSource="{Binding Path=BodyOptions}" SelectedItem="{Binding Path=SelectedBodyOption, Mode=TwoWay}"/>-->
+                </StackPanel>
+                
+                
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Rotation: "/>
+                <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Path=RotationOptions}" SelectedItem="{Binding Path=SelectedRotationOption, Mode=TwoWay}"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Units To mm: "/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=UnitsToMm, Mode=TwoWay}" Margin="5"/>
+
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Original Frame rate: "/>
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=OriginalFrameRate, Mode=TwoWay}" Margin="5"/>
+
+                <TextBlock Text="Smoothing Function: " Grid.Row="4" Grid.Column="0"/>
+                <TextBlock Text="Repeat Smooths:" Grid.Row="5" Grid.Column="0"/>
+                <TextBlock Text="Use DFT for Frequency: " Grid.Row="6" Grid.Column="0"/>
+
+                <ComboBox Margin="5" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding Path=SmoothingFunctions}" DisplayMemberPath="Name" SelectedItem="{Binding Path=SelectedSmoothingFunction, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Path=RepeatSmooths, Mode=TwoWay}" Grid.Row="5" Grid.Column="1" Margin="5"/>
+                <CheckBox Grid.Row="6" Grid.Column="1" IsChecked="{Binding Path=UseDft, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="5"/>
+                
+                <TextBlock Grid.Row="7" Grid.Column="0" Text="Still Cut off (mm/s): "/>
+                <TextBlock Grid.Row="8" Grid.Column="0" Text="Walking Cut off (mm/s): "/>
+
+                <TextBox Text="{Binding Path=StillCutOff, Mode=TwoWay}" Grid.Row="7" Grid.Column="1" Margin="5"/>
+                <TextBox Text="{Binding Path=WalkingCutOff, Mode=TwoWay}" Grid.Row="8" Grid.Column="1" Margin="5"/>
+
+                <TextBlock Grid.Row="9" Grid.Column="0" Text="Get results only for interactions: "/>
+                <CheckBox Grid.Row="9" Grid.Column="1" IsChecked="{Binding Path=InteractionsOnly, Mode=TwoWay}" VerticalAlignment="Center"/>
+
+                <TextBlock Grid.Row="10" Grid.Column="0" Text="Minimum number of detected frames: "/>
+                <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding Path=MinimumNumberDetectedFrames, Mode=TwoWay}" VerticalAlignment="Center"/>
+
+                <GroupBox Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Header="All Results">
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Max Velocity: " Grid.Row="0" Grid.Column="0"/>
+                            <TextBlock Text="Max Centroid Velocity: " Grid.Row="1" Grid.Column="0"/>
+                            <TextBlock Text="Max Angular Velocity: " Grid.Row="2" Grid.Column="0"/>
+                            <TextBlock Text="Average Velocity: " Grid.Row="3" Grid.Column="0"/>
+                            <TextBlock Text="Average Centroid Velocity: " Grid.Row="4" Grid.Column="0"/>
+                            <TextBlock Text="Average Angular Velocity: " Grid.Row="5" Grid.Column="0"/>
+                            <TextBlock Text="Distance Travelled: " Grid.Row="6" Grid.Column="0"/>
+                            <TextBlock Text="Centroid Distance Travelled: " Grid.Row="7" Grid.Column="0"/>
+
+                            <TextBlock Text="{Binding Path=MaxVelocity}" Grid.Row="0" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=MaxCentroidVelocity}" Grid.Row="1" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=MaxAngularVelocity}" Grid.Row="2" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=AverageVelocity}" Grid.Row="3" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=AverageCentroidVelocity}" Grid.Row="4" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=AverageAngularVelocity}" Grid.Row="5" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=DistanceTravelled}" Grid.Row="6" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=CentroidDistanceTravelled}" Grid.Row="7" Grid.Column="1"/>
+
+                            <TextBlock Text="Left Whisker Frequency: " Grid.Row="8" Grid.Column="0"/>
+                            <TextBlock Text="Right Whisker Frequency: " Grid.Row="9" Grid.Column="0"/>
+                            <TextBlock Text="Left Whisker Amplitude: " Grid.Row="10" Grid.Column="0"/>
+                            <TextBlock Text="Right Whisker Amplitude: " Grid.Row="11" Grid.Column="0"/>
+                            <TextBlock Text="Left Whisker Mean Offset: " Grid.Row="12" Grid.Column="0"/>
+                            <TextBlock Text="Right Whisker Mean Offset: " Grid.Row="13" Grid.Column="0"/>
+                            <TextBlock Text="Left Whisker Standard Deviation: " Grid.Row="14" Grid.Column="0"/>
+                            <TextBlock Text="Right Whisker Standard Deviation: " Grid.Row="15" Grid.Column="0"/>
+                            <TextBlock Text="Left Whisker 2√Root Mean Square Error: " Grid.Row="16" Grid.Column="0"/>
+                            <TextBlock Text="Right Whisker 2√Root Mean Square Error: " Grid.Row="17" Grid.Column="0"/>
+                            <TextBlock Text="Left Whisker Avg. Angular Velocity: " Grid.Row="18" Grid.Column="0"/>
+                            <TextBlock Text="Right Whisker Avg. Angular Velocity: " Grid.Row="19" Grid.Column="0"/>
+                            <TextBlock Text="Left Whisker Avg. Protraction Velocity: " Grid.Row="20" Grid.Column="0"/>
+                            <TextBlock Text="Right Whisker Avg. Protraction Velocity: " Grid.Row="21" Grid.Column="0"/>
+                            <TextBlock Text="Left Whisker Avg. Retraction Velocity: " Grid.Row="22" Grid.Column="0"/>
+                            <TextBlock Text="Right Whisker Avg. Retraction Velocity: " Grid.Row="23" Grid.Column="0"/>
+
+                            <TextBlock Text="{Binding Path=LeftWhiskerFrequency}" Grid.Row="8" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=RightWhiskerFrequency}" Grid.Row="9" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=LeftWhiskerAmplitude}" Grid.Row="10" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=RightWhiskerAmplitude}" Grid.Row="11" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=LeftWhiskerMeanOffset}" Grid.Row="12" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=RightWhiskerMeanOffset}" Grid.Row="13" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=LeftSTD}" Grid.Row="14" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=RightSTD}" Grid.Row="15" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=LeftRMS}" Grid.Row="16" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=RightRMS}" Grid.Row="17" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=LeftWhiskerAvgAngularVelocity}" Grid.Row="18" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=RightWhiskerAvgAngularVelocity}" Grid.Row="19" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=LeftWhiskerAvgProtractionVelocity}" Grid.Row="20" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=RightWhiskerAvgProtractionVelocity}" Grid.Row="21" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=LeftWhiskerAvgRetractionVelocity}" Grid.Row="22" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Path=RightWhiskerAvgRetractionVelocity}" Grid.Row="23" Grid.Column="1"/>
+                        </Grid>
+                    </ScrollViewer>
+                </GroupBox>
+            </Grid>
+        </Grid>
+        
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Apply" Command="{Binding Path=ApplyCommand}"/>
+            <Button Content="Export" Command="{Binding Path=ExportCommand}"/>
+            <Button Content="Export Feet" Command="{Binding Path=ExportFeetCommand}"/>
+            <Button Content="Cancel" Command="{Binding Path=CancelCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>

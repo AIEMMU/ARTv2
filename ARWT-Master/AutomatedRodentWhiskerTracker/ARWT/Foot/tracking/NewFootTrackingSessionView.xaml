@@ -1,0 +1,87 @@
+﻿<Window x:Class="ARWT.Foot.tracking.NewFootTrackingSessionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ARWT.Foot.tracking"
+             xmlns:behaviours="clr-namespace:ARWT.Behaviours"
+             
+        
+        mc:Ignorable="d" 
+        
+             behaviours:WindowClosingBehavior.Close="{Binding Path=Close, Mode=TwoWay}"
+             behaviours:WindowClosingBehavior.Closing="{Binding Path=ClosingCommand}"
+             Title="Foot Tracking Settings" Height="1080" Width="1920" WindowState="Maximized">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "*" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "450" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions >
+        
+        <GroupBox Header="Foot Tracking Settings">
+            <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility= "Auto" HorizontalScrollBarVisibility= "Auto" >
+                <Grid >
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height= "Auto" />
+                        <RowDefinition Height= "Auto" />
+                        <RowDefinition Height= "Auto" />
+                        <RowDefinition Height= "Auto" />
+                        <RowDefinition Height= "Auto" />
+                        <RowDefinition Height= "Auto" />
+                        <RowDefinition />
+                        <RowDefinition Height= "Auto" />
+                    </Grid.RowDefinitions >
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width= "Auto" />
+                        <ColumnDefinition Width= "*" />
+                    </Grid.ColumnDefinitions >
+                    
+                    <TextBlock Grid.Row= "0" Grid.Column= "0" Text= "Downsample scale factor" Margin="5"/>
+                    <TextBox Text="{Binding Path=scaleFactor, Mode=TwoWay}" Grid.Row="0" Grid.Column="1"  />
+                   
+                    <TextBlock Grid.Row= "1" Grid.Column= "0" Text= "Erosion Kernel Size (must be odd)" Margin="5"/>
+                    <TextBox Text="{Binding Path=KernelSize, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" />
+                    
+                    <TextBlock Grid.Row= "3" Grid.Column= "0" Text= "Contour Distance" Margin="5,0,5,4.8" Height="17" VerticalAlignment="Bottom"/>
+                    <TextBox Text="{Binding Path=contourDistance,Mode=TwoWay}" Grid.Row="3" Grid.Column="1" />
+                    
+                    <TextBlock Grid.Row= "2" Grid.Column= "0" Text= "Erosions Iterations" Margin="5"/>
+                    <TextBox Text="{Binding Path=erosionIterations,Mode=TwoWay}" Grid.Row="2" Grid.Column="1" />
+                    
+                    <TextBlock Grid.Row= "4" Grid.Column= "0" Text= "Area of Contour" Margin="5"/>
+                    <Slider Grid.Row= "4" Grid.Column= "1"  Margin="5" Value= "{Binding area, Mode=TwoWay}" Minimum= "{Binding Settings.areaMin}" Maximum= "{Binding Settings.areaMax}"  />
+                    
+                    <StackPanel Grid.Row= "8" Grid.Column= "0" Grid.ColumnSpan= "2" Orientation= "Horizontal" HorizontalAlignment= "Center" >
+                        <Button Width = "125" Content= "Preview" Command= "{Binding Path=PreviewCommand}" />
+                        <Button Width = "125" Content= "Ok" Command= "{Binding Path=OkCommand}" />
+                        <Button Width = "125" Content= "Cancel" Command= "{Binding Path=CancelCommand}" />
+                    </StackPanel >
+                </Grid >
+            </ScrollViewer >
+        </GroupBox >
+        <Border BorderBrush= "Gray" BorderThickness= "1" Margin= "2" Padding= "2" Grid.Row= "0" Grid.Column= "1" >
+            <Grid >
+                <Grid.RowDefinitions >
+                    <RowDefinition />
+                    <RowDefinition Height= "Auto" />
+                </Grid.RowDefinitions >
+                <Image Grid.Row= "0" Source="{Binding Path=DisplayImage}"/>
+                <TextBlock  Text= "{Binding Path=FrameNumberDisplay}" VerticalAlignment= "Bottom" HorizontalAlignment= "Left" FontSize= "24" Foreground= "Red" />
+                <Slider Grid.Row= "1" Value= "{Binding Path=Frame, Mode=TwoWay}" Minimum= "{Binding Path=minFrame}" Maximum="{Binding Path=maxFrame}" />
+            </Grid >
+        </Border >
+    </Grid >
+</Window >

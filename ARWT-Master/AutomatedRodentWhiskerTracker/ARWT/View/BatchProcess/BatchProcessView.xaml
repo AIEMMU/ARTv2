@@ -1,0 +1,107 @@
+﻿<Window x:Class="ARWT.View.BatchProcess.BatchProcessView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:behaviours="clr-namespace:ARWT.Behaviours"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        Title="BatchProcessView" Height="720" Width="1280" WindowState="Maximized"
+        behaviours:WindowClosingBehavior.Close="{Binding Path=Close}"
+        behaviours:WindowClosingBehavior.Closing="{Binding Path=ClosingCommand}">
+    <Window.Resources>
+        <Style TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+        <Style TargetType="ProgressBar">
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <!--<Setter Property="HorizontalAlignment" Value="Stretch"/>-->
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <!--<ColumnDefinition Width="*"/>-->
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Add File" Command="{Binding Path=AddTgFileCommand}"/>
+                <Button Content="Add Folder" Command="{Binding Path=AddTgFolderCommand}"/>
+                <Button Content="Set Output Folder" Command="{Binding Path=SetOutputFolderCommand}"/>
+                <Button Content="Get Output Folder" Command="{Binding Path=LoadOutputFolderCommand}"/>
+                <Button Content="Remove File" Command="{Binding Path=RemoveTgFileCommand}"/>
+                <Button Content="Clear List" Command="{Binding Path=ClearTgFilesCommand}"/>
+            <!--</StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Settings" Command="{Binding Path=BatchSettingsCommand}"/>
+                
+            <Button Content="Get Output Folder" Command="{Binding Path=LoadOutputFolderCommand}"/>-->
+                <Button Content="Settings" Command="{Binding Path=BatchSettingsCommand}"/>
+                <Button Content="Process" Command="{Binding Path=ProcessCommand}"/>
+                <Button Content="Export" Command="{Binding Path=ExportBatchCommand}"/>
+                <!--<Button Content="Export all" Command="{Binding Path=ExportAllCommand}"/>-->
+
+                <TextBlock Text="Videos to run at once: " VerticalAlignment="Center"/>
+                <ComboBox SelectedItem="{Binding Path=DegreesOfParallel, Mode=TwoWay}" VerticalAlignment="Center">
+                    <ComboBox.ItemsSource>
+                        <x:Array Type="{x:Type system:Int32}">
+                            <system:Int32>1</system:Int32>
+                            <system:Int32>2</system:Int32>
+                            <system:Int32>3</system:Int32>
+                            <system:Int32>4</system:Int32>
+                            <system:Int32>5</system:Int32>
+                            <system:Int32>6</system:Int32>
+                        </x:Array>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
+            </StackPanel>
+            <!--<Button Content="Load Labbook" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Command="{Binding Path=LoadLabbookCommand}"/>-->
+
+            <!--<TextBlock Grid.Row="0" Grid.Column="0" Text="TG" HorizontalAlignment="Center"/>-->
+            <ListView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Path=TgItemsSource}" SelectedItem="{Binding Path=SelectedTgItem, Mode=TwoWay}" HorizontalContentAlignment="Stretch">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" Width="400" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Width="140" Header="Progress">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ProgressBar Maximum="100" Value="{Binding Path=Progress, Mode=OneWay}" Width="120"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="50" Header="Review">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                   <Button Command="{Binding Path=ReviewCommand}" Width="25" Height="25">
+                                       <Label Content="R"/>
+                                   </Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Video Has Been Reviewed" Width="400" DisplayMemberBinding="{Binding Reviewed}" />
+                    </GridView>
+                </ListView.View>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="IsSelected" Value="{Binding Path=IsSelected}"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+            
+        </Grid>
+        
+        <!--<Separator Grid.Row="4"/>-->
+        
+        
+    </Grid>
+</Window>

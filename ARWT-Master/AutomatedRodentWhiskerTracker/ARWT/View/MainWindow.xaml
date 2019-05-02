@@ -1,0 +1,62 @@
+﻿<Window x:Class="ARWT.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:behaviours="clr-namespace:ARWT.Behaviours"
+        Title="{Binding Path=TitleName, StringFormat='ARWT {0}'}" Height="480" Width="640" WindowState="Maximized"
+        behaviours:WindowClosingBehavior.Close="{Binding Path=Close, Mode=TwoWay}"
+        behaviours:WindowClosingBehavior.Closing="{Binding Path=ClosingCommand}">
+    <Grid>
+        <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="New" Command="{Binding Path=NewCommand}"/>
+                <MenuItem Header="Open" Command="{Binding Path=OpenCommand}"/>
+                <MenuItem Header="Save" Command="{Binding Path=SaveCommand}"/>
+                <MenuItem Header="Batch Process" Command="{Binding Path=BatchProcessCommand}"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Image HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Source="{Binding Path=Image}"/>
+            <TextBlock Text="{Binding Path=FrameNumberDisplay}" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="16" Foreground="Red"/>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <ListView ItemsSource="{Binding Path=Events}" Grid.Row="0" Margin="5">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Action" Width="120" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Object" Width="75" DisplayMemberBinding="{Binding BoundaryName}"/>
+                            <GridViewColumn Header="Frame" Width="50" DisplayMemberBinding="{Binding FrameNumber}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Export Raw Data" Command="{Binding Path=ExportRawDataCommand}"/>
+                    <!--<Button Content="Export interactions" Command="{Binding Path=ExportInteractionsCommand}"/>-->
+                    <!--<Button Content="Whisker Debug" Command="{Binding Path=WhiskerDebugCommand}"/>-->
+                    <Button Content="Show Data" Command="{Binding Path=ShowDataCommand}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Slider Grid.Row="2" HorizontalAlignment="Stretch" Minimum="0" Maximum="{Binding Path=FrameCount}" TickFrequency="1" IsEnabled="{Binding Path=SliderEnabled}" Value="{Binding Path=CurrentFrame, Mode=TwoWay}" Margin="5"/>
+        
+        <!--<ContentPresenter Grid.Row="3" Height="400" Content="{Binding Path=ContentToDisplay}"/>-->
+    </Grid>
+</Window>

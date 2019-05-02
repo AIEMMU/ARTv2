@@ -1,0 +1,110 @@
+﻿<Window x:Class="ARWT.View.Settings.BatchWhiskerSettingsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ARWT.View.Settings"
+        xmlns:behaviours="clr-namespace:ARWT.Behaviours"
+        xmlns:converters="clr-namespace:ARWT.Converters"
+        mc:Ignorable="d"
+        behaviours:WindowClosingBehavior.Close="{Binding Path=Close, Mode=TwoWay}"
+        behaviours:WindowClosingBehavior.Closing="{Binding Path=ClosingCommand}"
+        Title="SettingsView" Height="480" Width="640">
+    <Window.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <converters:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+        <Style TargetType="Slider">
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="1"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="1"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ListView Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" ItemsSource="{Binding Path=Mice}" SelectedItem="{Binding Path=SelectedMouse, Mode=TwoWay}" Margin="2">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="File" Width="120" DisplayMemberBinding="{Binding VideoFileName}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Border BorderBrush="Gray" BorderThickness="1" Margin="2" Padding="2" Grid.Row="0"  Grid.Column="1">
+                <Grid Visibility="{Binding Path=ShowVideo, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Row="0" Source="{Binding Path=DisplayImage}"/>
+                    <Slider Grid.Row="1" Value="{Binding Path=SliderValue, Mode=TwoWay}" Minimum="{Binding Path=Minimum}" Maximum="{Binding Path=Maximum}"/>
+                </Grid>
+            </Border>
+            <Border BorderBrush="Gray" BorderThickness="1" Margin="2" Padding="2" Grid.Row="1" Grid.Column="1" IsEnabled="{Binding Path=ShowVideo}">
+                <GroupBox Header="Whisker Settings" Grid.Column="0" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="22.182"/>
+                            <ColumnDefinition Width="154.618"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Crop Scale Factor: " Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="1,1,0.8,0.6"/>
+                        <TextBox Text="{Binding Path=CropScaleFactor}" Grid.Row="0" Grid.Column="2" Margin="0.2,0,-0.2,17.2" Grid.RowSpan="2"/>
+
+                        <TextBlock Text="Resolution Increase Scale Factor: " Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="1,0.4,0.8,1.2"/>
+                        <TextBox Text="{Binding Path=ResolutionIncreaseScaleFactor}" Grid.Row="1" Grid.Column="2" Margin="0.2,0.4,-0.2,22.4" Grid.RowSpan="2"/>
+
+                        <TextBlock VerticalAlignment="Center" Text="Interpolation Type: " Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="1,3.8,0.8,3.4"/>
+                        <ComboBox Grid.Row="2" Grid.Column="2" SelectedItem="{Binding Path=InterpolationType, Mode=TwoWay}" ItemsSource="{Binding Path=InterpolationTypes}" Margin="5.2,4.8,4.8,5.4" Padding="-2"/>
+
+                        <TextBlock Text="Remove Duds:" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="1,5.6,0.8,4.8"></TextBlock>
+                        <CheckBox IsChecked="{Binding Path=RemoveDuds, Mode=TwoWay}" Grid.Row="3" Grid.Column="2" Margin="5.2,4.6,4.8,4.8"/>
+
+                        <TextBlock Text="Minimum Whisker Threshold: " Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="1,1.2,0.8,0.4"/>
+                        <TextBox Text="{Binding Path=LineThreshold}" Grid.Row="4" Grid.Column="2" Margin="0.2,0.2,-0.2,17" Grid.RowSpan="2"/>
+
+                        <TextBlock Text="Lower Bound: " Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="1,0.6,0.8,1"/>
+                        <TextBox Text="{Binding Path=LowerBound}" Grid.Row="4" Grid.Column="2" Margin="0.2,17.2,-0.2,0" Grid.RowSpan="2"/>
+
+                        <TextBlock Text="Upper Bound: " Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Margin="1,1,0.8,0.6"/>
+                        <TextBox Text="{Binding Path=UpperBound}" Grid.Row="6" Grid.Column="2" Margin="0.2,0,-0.2,-0.4"/>
+                    </Grid>
+                </GroupBox>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Ok" Command="{Binding Path=OkCommand}"/>
+            <Button Content="Cancel" Command="{Binding Path=CancelCommand}"/>
+        </StackPanel>
+    </Grid>
+</Window>
+

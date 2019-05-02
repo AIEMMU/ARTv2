@@ -1,0 +1,172 @@
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\MVVM_Template1.exe.config
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\MVVM_Template1.exe
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\MVVM_Template1.pdb
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ArtLibrary.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\System.Windows.Interactivity.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ZedGraph.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ArtLibrary.pdb
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\de\System.Windows.Interactivity.resources.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\en\System.Windows.Interactivity.resources.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\es\System.Windows.Interactivity.resources.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\fr\System.Windows.Interactivity.resources.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\it\System.Windows.Interactivity.resources.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ja\System.Windows.Interactivity.resources.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ko\System.Windows.Interactivity.resources.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ru\System.Windows.Interactivity.resources.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\MainWindow.baml
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\App.baml
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\MainWindow.g.cs
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\NewSession\NewSessionView.g.cs
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\App.g.cs
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1_MarkupCompile.cache
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1_MarkupCompile.lref
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\NewSession\NewSessionView.baml
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.g.resources
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.Properties.Resources.resources
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.csproj.GenerateResource.Cache
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.exe
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.pdb
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\MVVM_Template1.exe.config
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.exe
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.pdb
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\MVVM_Template1.exe
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\MVVM_Template1.pdb
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ArtLibrary.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\System.Windows.Interactivity.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ArtLibrary.pdb
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\MainWindow.baml
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\App.baml
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\MainWindow.g.cs
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\NewSession\NewSessionView.g.cs
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\App.g.cs
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1_MarkupCompile.cache
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1_MarkupCompile.lref
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\NewSession\NewSessionView.baml
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.g.resources
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.Properties.Resources.resources
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.csproj.GenerateResource.Cache
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\Emgu.CV.UI.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\Emgu.CV.UI.GL.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\Emgu.CV.World.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ZedGraph.xml
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\Emgu.CV.UI.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\Emgu.CV.UI.GL.dll
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\Emgu.CV.World.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\Progress\ProgressView.g.cs
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\Progress\ProgressView.baml
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\Progress\ProgressView.g.cs
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\Progress\ProgressView.baml
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\CropImage\CropImageView.g.cs
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\CropImage\CropImageView.baml
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\CropImage\CropImageView.g.cs
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\CropImage\CropImageView.baml
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.csprojResolveAssemblyReference.cache
+D:\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.csproj.ResolveComReference.cache
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.csproj.ResolveComReference.cache
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.csprojResolveAssemblyReference.cache
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ZedGraph.dll
+C:\Users\Brett\OneDrive\ARWT\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ZedGraph.xml
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\MVVM_Template1.exe.config
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.csproj.ResolveComReference.cache
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.exe
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.pdb
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\MVVM_Template1.exe
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\MVVM_Template1.pdb
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ArtLibrary.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\Emgu.CV.UI.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\Emgu.CV.UI.GL.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\Emgu.CV.World.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\System.Windows.Interactivity.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ArtLibrary.pdb
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\MainWindow.baml
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\App.baml
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\CropImage\CropImageView.g.cs
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\MainWindow.g.cs
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\NewSession\NewSessionView.g.cs
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\Progress\ProgressView.g.cs
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\App.g.cs
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1_MarkupCompile.cache
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1_MarkupCompile.lref
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\CropImage\CropImageView.baml
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\NewSession\NewSessionView.baml
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\Progress\ProgressView.baml
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.g.resources
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.Properties.Resources.resources
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.csproj.GenerateResource.Cache
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ARWT.exe.config
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ARWT.exe
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ARWT.pdb
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\ARWT_MarkupCompile.cache
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\ARWT_MarkupCompile.lref
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\ARWT.g.resources
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\ARWT.Properties.Resources.resources
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\ARWT.exe
+C:\Users\Brett\OneDrive\ARWT - Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\ARWT.pdb
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ARWT.exe.config
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.csproj.ResolveComReference.cache
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\ARWT.exe
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\ARWT.pdb
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ARWT.exe
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ARWT.pdb
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ArtLibrary.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\Emgu.CV.UI.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\Emgu.CV.UI.GL.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\Emgu.CV.World.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\System.Windows.Interactivity.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ArtLibrary.pdb
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\de\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\en\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\es\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\fr\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\it\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ja\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ko\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\ru\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\bin\x64\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\MainWindow.baml
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\App.baml
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\CropImage\CropImageView.g.cs
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\MainWindow.g.cs
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\NewSession\NewSessionView.g.cs
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\Progress\ProgressView.g.cs
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\App.g.cs
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\ARWT_MarkupCompile.cache
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\ARWT_MarkupCompile.lref
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\CropImage\CropImageView.baml
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\NewSession\NewSessionView.baml
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\Progress\ProgressView.baml
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\ARWT.g.resources
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\ARWT.Properties.Resources.resources
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.csproj.GenerateResource.Cache
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\Image\ImageShower.g.cs
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\Image\ImageShower.baml
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\MVVM_Template1.csprojResolveAssemblyReference.cache
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\NewSession\NewWhiskerSessionView.g.cs
+C:\Users\Brett\OneDrive\ARWT-Master\AutomatedRodentWhiskerTracker\MVVM_Template1\obj\x64\Debug\View\NewSession\NewWhiskerSessionView.baml
