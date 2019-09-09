@@ -4,35 +4,6 @@ Automated Rodent and Whisker tracking software
 A description of this software as well as detailed instructions and a tutorial
 may be found <insert documentation link>
 
-Issues
-=========
-
-[Issue Tracker](link to a git hub repositry)
-
-Downloading
-===========
-
-Pre-built software is available for [download][].
-
-[download]: link to the binary exe. files
-
-See the instructions for building below.
-
-Tip: Git on Windows
--------------------
-
-1. Install [msysgit][].
-
-2. You may need to run the following command so that the https protocol will work correctly
-
-       git config --global http.sslcainfo "/c/Program Files (x86)/Git/bin/curl-ca-bundle.crt"
-
-3. Clone the repository
-
-       git clone <insert binary location>
-
-[msysgit]: http://code.google.com/p/msysgit/
-
 Building
 ========
 
