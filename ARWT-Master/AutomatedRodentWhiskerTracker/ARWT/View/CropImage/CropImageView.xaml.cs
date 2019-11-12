@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using System;
 
 namespace ARWT.View.CropImage
 {
@@ -40,10 +41,16 @@ namespace ARWT.View.CropImage
             get;
             set;
         }
+        private bool mouseUp
+        {
+            get;
+            set;
+        }
 
         public CropImageView()
         {
             InitializeComponent();
+            mouseUp = true;
         }
 
         private void Grid_OnSizeChanged(object sender, SizeChangedEventArgs e)
@@ -70,20 +77,53 @@ namespace ARWT.View.CropImage
 
         private void Image_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Rectangle.Width = 0;
-            Rectangle.Height = 0;
-            Point mousePosition = e.GetPosition(Canvas);
-            StartX = mousePosition.X;
-            StartY = mousePosition.Y;
 
-            Rectangle.SetValue(Canvas.LeftProperty, StartX);
-            Rectangle.SetValue(Canvas.TopProperty, StartY);
-            Dragging = true;
+            if (checkPos(e.GetPosition(Image)))
+            {
+                
+                Rectangle.Width = 0;
+                Rectangle.Height = 0;
+                Point mousePosition = e.GetPosition(Canvas);
+                Point imagePoint = e.GetPosition(Image);
+                Console.WriteLine(mousePosition + " " + imagePoint);
+                StartX = mousePosition.X;
+                StartY = mousePosition.Y;
+
+                Rectangle.SetValue(Canvas.LeftProperty, StartX);
+                Rectangle.SetValue(Canvas.TopProperty, StartY);
+                Dragging = true;
+            }
+           // if (mouseUp)
+           // {
+           //     mouseUp = false;
+          //      Console.WriteLine("meep");
+          //  }
+         //   else if (!mouseUp)
+        //    {
+        //        mouseUp = true;
+        //        Console.WriteLine("moop");
+        //    }
+            
+           // mouseUp = false;
+        }
+
+        private bool checkPos(Point point)
+        {
+           if (point.X <0 || point.X > Image.Width)
+            {
+                return false;
+            }
+           if (point.Y < 0 || point.Y > Image.Height)
+            {
+                return false;
+            }
+            return true;
         }
 
         private void Image_OnMouseMove(object sender, MouseEventArgs e)
         {
-            if (!Dragging)
+        //Console.WriteLine(Dragging+" "+mouseUp);
+        if (!Dragging)
             {
                 return;
             }
@@ -114,8 +154,14 @@ namespace ARWT.View.CropImage
 
         private void Image_OnMouseUp(object sender, MouseButtonEventArgs e)
         {
+            if (!checkPos(e.GetPosition(Image)))
+            {
+                return;
+            }
             Dragging = false;
+         
             UpdatePixelRect();
+            
         }
 
         private void UpdatePixelRect()

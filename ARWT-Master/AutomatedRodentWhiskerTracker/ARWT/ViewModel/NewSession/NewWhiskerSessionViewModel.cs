@@ -563,7 +563,11 @@ namespace ARWT.ViewModel.NewSession
             
             MaxFrame = Video.FrameCount - 1;
             FrameNumber = 0;
-
+            WhiskerSettings = ModelResolver.Resolve<IWhiskerVideoSettings>();
+            WhiskerSettings.AssignDefaultValues();
+            video.WhiskerSettings = WhiskerSettings;
+            video.FootSettings = FootSettings;
+            /*
             if (video.WhiskerSettings == null)
             {
                 WhiskerSettings = ModelResolver.Resolve<IWhiskerVideoSettings>();
@@ -575,7 +579,7 @@ namespace ARWT.ViewModel.NewSession
             {
                 WhiskerSettings = video.WhiskerSettings;
                 FootSettings = video.FootSettings;
-            }
+            }*/
         }
 
         private void UpdateFrameNumber(int frameNumber)
@@ -591,8 +595,9 @@ namespace ARWT.ViewModel.NewSession
             WorkingImage = Video.GetGrayFrameImage();
             PointF[] headPoints;
             Point[] bodyPoints;
+            Rbsk.Roi = _Rbsk.Roi;
             Rbsk.GetHeadAndBody(WorkingImage.Convert<Bgr, byte>(), out headPoints, out bodyPoints);
-
+            
             HeadPoints = headPoints;
             if (headPoints == null)
             {
@@ -600,6 +605,7 @@ namespace ARWT.ViewModel.NewSession
             }
             else
             {
+
                 HeadPoint = headPoints[2];
             }
             
@@ -621,10 +627,12 @@ namespace ARWT.ViewModel.NewSession
 
             using (Image<Bgr, byte> img = WorkingImage.Convert<Bgr, byte>())
             {
-                img.DrawPolyline(BodyContour, true, new Bgr(Color.Yellow));
-                img.Draw(new CircleF(HeadPoint, 2), new Bgr(Color.Red));
-                PointF midPoint = HeadPoints[1].MidPoint(HeadPoints[3]);
-                img.Draw(new LineSegment2DF(midPoint, HeadPoint),new Bgr(Color.Red), 1);
+                Point[] bodyPoints = addROI(BodyContour); 
+                PointF[] headPoints = addROI(HeadPoints);
+                img.DrawPolyline(bodyPoints, true, new Bgr(Color.Yellow));
+                img.Draw(new CircleF(headPoints[2], 2), new Bgr(Color.Red));
+                PointF midPoint = headPoints[1].MidPoint(headPoints[3]);
+                img.Draw(new LineSegment2DF(midPoint, headPoints[2]), new Bgr(Color.Red), 1);
 
                 if (FinalWhiskers != null)
                 {
@@ -635,7 +643,8 @@ namespace ARWT.ViewModel.NewSession
                         foreach (IWhiskerSegment whisker in FinalWhiskers.LeftWhiskers)
                         {
                             Color color = Color.White;
-                            img.Draw(whisker.Line, new Bgr(color), 1);
+                            LineSegment2D line = addROI(whisker.Line);
+                            img.Draw(line, new Bgr(color), 1);
                         }
 
                     }
@@ -645,13 +654,48 @@ namespace ARWT.ViewModel.NewSession
                         foreach (IWhiskerSegment whisker in FinalWhiskers.RightWhiskers)
                         {
                             Color color = Color.White;
-                            img.Draw(whisker.Line, new Bgr(color), 1);
+                            LineSegment2D line = addROI(whisker.Line);
+                            img.Draw(line, new Bgr(color), 1);
                         }
                     }
                 }
 
                 DisplayImage = ImageService.ToBitmapSource(img);
             }
+        }
+
+        private LineSegment2D addROI(LineSegment2D line)
+        {
+            LineSegment2D points = line;
+            points.P1  = new Point(_Rbsk.Roi.X + points.P1.X, _Rbsk.Roi.Y + points.P1.Y);
+            points.P2 = new Point(_Rbsk.Roi.X + points.P2.X, _Rbsk.Roi.Y + points.P2.Y);
+            return points;
+
+        }
+
+        private PointF[] addROI(PointF[] Points)
+        {
+            PointF[] points = new PointF[Points.Length];
+            ;
+            for (int i = 0; i < Points.Length; i++)
+            {
+                points[i].X = Points[i].X + +_Rbsk.Roi.X;
+                points[i].Y = Points[i].Y + +_Rbsk.Roi.Y;
+            }
+
+            return points;
+        }
+        private Point[] addROI(Point[] Points)
+        {
+            Point[] points = new Point[Points.Count()];
+            ;
+            for (int i = 0; i < Points.Count(); i++)
+            {
+                points[i].X = Points[i].X + +_Rbsk.Roi.X;
+                points[i].Y = Points[i].Y + +_Rbsk.Roi.Y;
+            }
+
+            return points;
         }
 
         private void Preview()

@@ -851,6 +851,7 @@ namespace ArtLibrary.Model.RBSK
 
             if (BackgroundImage != null && useBackground)
             {
+                
                 using (Image<Gray, Byte> grayImage = image.Convert<Gray, Byte>())
                 //using (Image<Gray, Byte> filteredImage = grayImage.SmoothMedian(rbsk.Settings.FilterLevel))
                 using (Image<Gray, Byte> binaryImage = grayImage.ThresholdBinary(new Gray(rbsk.Settings.BinaryThreshold), new Gray(255)))

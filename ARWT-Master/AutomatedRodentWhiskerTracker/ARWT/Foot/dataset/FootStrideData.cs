@@ -60,14 +60,14 @@ namespace ARWT.Foot.dataset
                 List<IFootPlacement> foot = new List<IFootPlacement>();
                 List<int> down = new List<int>();
                 List<int> up = new List<int>();
-                Console.WriteLine(count + "Hey" );
+                //Console.WriteLine(count + "Hey" );
                 if(count < _results.Count -1)
                 {
                     while (_results[count].FeetCollection.leftfront != null && count < _results.Count - 1)
                     {
                         foot.Add(_results[count].FeetCollection.leftfront.value);
                         down.Add(count);
-                        Console.WriteLine(count + "Hey you ");
+                        //Console.WriteLine(count + "Hey you ");
                         count++;
                     }
                 }
@@ -76,7 +76,7 @@ namespace ARWT.Foot.dataset
                     while (_results[count].FeetCollection.leftfront == null && count <_results.Count-1)
                     {
                         up.Add(count);
-                        Console.WriteLine(count + "Hey Business");
+                        //Console.WriteLine(count + "Hey Business");
                         count++;
                     }
                 }

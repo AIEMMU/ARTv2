@@ -104,9 +104,9 @@ namespace ARWT.Foot.centroidTracker
                 {
                     foreach(var moo in item)
                     {
-                        Console.Write(moo + " ");
+                     //   Console.Write(moo + " ");
                     }
-                    Console.Write("\n");
+                  //  Console.Write("\n");
                 }
                 int[] rows = HelperFunctions.sortRows(Distances);
                 int[] cols = HelperFunctions.sortIndexs(Distances, rows);
@@ -141,8 +141,8 @@ namespace ARWT.Foot.centroidTracker
                 List<int> unusedCols = getUnused(usedCols, Distances[0].Count());
                 
                 
-                Console.WriteLine(unusedRows.Count() + " " + unusedCols.Count());
-                Console.WriteLine(Distances.Count() + " " + Distances[0].Count);
+                //Console.WriteLine(unusedRows.Count() + " " + unusedCols.Count());
+               // Console.WriteLine(Distances.Count() + " " + Distances[0].Count);
                 if(Distances.Count ==5 && Distances[0].Count == 3)
                 {
                     int moo = 0;
@@ -214,9 +214,9 @@ namespace ARWT.Foot.centroidTracker
         {
             foreach(var i in item)
             {
-                Console.Write(i + " ");
+                //Console.Write(i + " ");
             }
-            Console.Write("\n");
+            //Console.Write("\n");
         }
 
         private int checkValue(int col, int length)

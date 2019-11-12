@@ -359,6 +359,7 @@ namespace ARWT.Model.RBSK2
             if (headPoints != null)
             {
                 currentFrame.HeadPoint = headPoints[2];
+                
             }else
             {
                 return null;
@@ -584,12 +585,6 @@ namespace ARWT.Model.RBSK2
                 CvInvoke.Circle(frame, new Point(Convert.ToInt32(currentFrame.Centroid.X * 4), Convert.ToInt32(currentFrame.Centroid.Y * 4)), 8, new MCvScalar(255, 0, 255), 2);
                 ////CvInvoke.Imwrite($"{i}_frame.png", frame);
 
-                //Do something for contours etc. 
-                //u[date this to something suitable
-                if (i == 105)
-                {
-                   int moasd = 1;
-                }
                 List<IfeetID> objects = feetCentroids.update(footplacement.ToArray(), centrePoint, headPoint, backPoint, currentFrame.BodyContour);
                 IFootCollection footCollection = ModelResolver.Resolve<IFootCollection>();
 
@@ -1840,19 +1835,20 @@ namespace ARWT.Model.RBSK2
         {
             //Rectangle roi = Rectangle.Empty;
 
-            //if (image.IsROISet)
-            //{
-            //    roi = image.ROI;
-            //    image.ROI = Rectangle.Empty;
-            //}
+            /*if (image.IsROISet)
+            {
+                roi = image.ROI;
+                image.ROI = Rectangle.Empty;
+            }*/
 
-            //if (!Roi.IsEmpty)
-            //{
-            //    BackgroundImage.ROI = Roi;
-            //}
+            /*if (!Roi.IsEmpty)
+            {
+                BackgroundImage.ROI = Roi;
+            }*/
 
             if (BackgroundImage != null && useBackground)
             {
+                
                 using (Image<Gray, Byte> grayImage = image.Convert<Gray, Byte>())
                 //using (Image<Gray, Byte> filteredImage = grayImage.SmoothMedian(rbsk.Settings.FilterLevel))
                 using (Image<Gray, Byte> binaryImage = grayImage.ThresholdBinary(new Gray(rbsk.Settings.BinaryThreshold), new Gray(255)))
@@ -1862,8 +1858,13 @@ namespace ARWT.Model.RBSK2
                 {
                     //ImageViewer.Show(filteredImage);
                     //ImageViewer.Show(binaryImage);
+                    //filteredImage.ROI = image.ROI;
                     PointF[] result = RBSKService.RBSK(filteredImage, rbsk);
-
+                    //for( int i = 0; i < result.Count(); i++)
+                   // {
+                    //    result[i].X += roi.X;
+                    //    result[i].Y = roi.Y;
+                   // }
                     IBodyDetection bodyDetection = ModelResolver.Resolve<IBodyDetection>();
                     bodyDetection.BinaryBackground = BackgroundImage;
                     bodyDetection.ThresholdValue = ThresholdValue;

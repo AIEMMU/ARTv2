@@ -36,3 +36,14 @@ D:\sourcecontrol\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Release\ArtLibrary.csp
 D:\sourcecontrol\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Release\ArtLibrary.csproj.CopyComplete
 D:\sourcecontrol\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Release\ArtLibrary.dll
 D:\sourcecontrol\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Release\ArtLibrary.pdb
+D:\ARTv2\ARTv2\ArtLibrary\ArtLibrary\ArtLibrary\bin\x64\Release\ArtLibrary.dll
+D:\ARTv2\ARTv2\ArtLibrary\ArtLibrary\ArtLibrary\bin\x64\Release\ArtLibrary.pdb
+D:\ARTv2\ARTv2\ArtLibrary\ArtLibrary\ArtLibrary\bin\x64\Release\Emgu.CV.UI.dll
+D:\ARTv2\ARTv2\ArtLibrary\ArtLibrary\ArtLibrary\bin\x64\Release\Emgu.CV.UI.GL.dll
+D:\ARTv2\ARTv2\ArtLibrary\ArtLibrary\ArtLibrary\bin\x64\Release\Emgu.CV.World.dll
+D:\ARTv2\ARTv2\ArtLibrary\ArtLibrary\ArtLibrary\bin\x64\Release\Emgu.UI.dll
+D:\ARTv2\ARTv2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Release\ArtLibrary.csproj.CoreCompileInputs.cache
+D:\ARTv2\ARTv2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Release\ArtLibrary.csproj.CopyComplete
+D:\ARTv2\ARTv2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Release\ArtLibrary.dll
+D:\ARTv2\ARTv2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Release\ArtLibrary.pdb
+D:\ARTv2\ARTv2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Release\ArtLibrary.csprojAssemblyReference.cache

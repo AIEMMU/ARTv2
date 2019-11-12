@@ -622,6 +622,7 @@ namespace ARWT.ViewModel.Datasets
                     result.UnitsToMilimeters = trackedVideo.UnitsToMilimeters;
                     result.SmoothFactor = 0.68;
                     result.GenerateResults(artFile);
+                    result.ROI = trackedVideo.ROI;
                     result.PelvicArea = trackedVideo.PelvicArea1;
                     result.PelvicArea2 = trackedVideo.PelvicArea2;
                     result.PelvicArea3 = trackedVideo.PelvicArea3;
@@ -695,6 +696,7 @@ namespace ARWT.ViewModel.Datasets
                         result.ResetFrames();
                         //result.FrameRate = FrameRate;
                         result.SmoothMotion = SmoothMotion;
+                        result.ROI = ROI;
                         result.GenerateResults();
                         result.VideoOutcome = SingleFileResult.Ok;
                         result.DataLoadComplete();

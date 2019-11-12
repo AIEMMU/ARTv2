@@ -716,10 +716,10 @@ namespace ARWT.ViewModel.Settings
             PointF[] result = RBSKService.RBSK(CurrentImage, rbsk);
             using (Image<Bgr, Byte> img = CurrentImage.Clone())
             {
-                //if (!ROI.IsEmpty)
-                //{
-                //    img.ROI = ROI;
-                //}
+                /*if (!ROI.IsEmpty)
+                {
+                    img.ROI = ROI;
+                }*/
 
                 if (result != null)
                 {
@@ -813,7 +813,7 @@ namespace ARWT.ViewModel.Settings
             }
 
             ROI = new Rectangle((int)roiRect.X, (int)roiRect.Y, (int)roiRect.Width, (int)roiRect.Height);
-            CurrentImage.ROI = ROI;
+           // CurrentImage.ROI = ROI;
             UpdateDisplayImage();
         }
 
@@ -833,14 +833,19 @@ namespace ARWT.ViewModel.Settings
         private void RemoveRoi()
         {
             CurrentImage.ROI = Rectangle.Empty;
+            ROI = Rectangle.Empty;
+            UpdateBinaryThreshold();
+            UpdateBinaryThreshold2();
+            UpdateDisplayImage();
+            UpdateGapDistance();
         }
 
         private void ShowWhiskerSettings()
         {
-            if (!PreviewGenerated)
-            {
+            //if (!PreviewGenerated)
+            //{
                 GeneratePreview();
-            }
+            ///}
 
             IRBSKVideo2 rbskVideo = ModelResolver.Resolve<IRBSKVideo2>();
             rbskVideo.Video = Video;

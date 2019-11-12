@@ -1241,7 +1241,7 @@ namespace ARWT.Model.RBSK2
                         return null;
                     }
 
-                    
+
                     //double vol2, vol3, vol4;
                     //image.
 
@@ -1252,6 +1252,7 @@ namespace ARWT.Model.RBSK2
 
                     //PointF dummy;
                     //ImageViewer.Show(finalImage);
+                    
                     bodyDetection.FindBody(finalImage, out waist, out waistArea, out waistArea2, out waistArea3, out waistArea4, out centroid, out bodyContour);
                     
                     //if (!centroid.IsEmpty)

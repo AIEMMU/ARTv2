@@ -125,15 +125,7 @@ namespace ARWT.Foot.dataset
         }
 
         private void leftHindNulle(List<int> leftHindNuller, IFootCollection feet, int index)
-        {   if (index == 302)
-            {
-                int asdds = 0;
-            }
-            if (index == 303)
-            {
-
-                int asdds = 0;
-            }
+        {   
             if (feet.leftHind != null)
             {
                 leftHindNuller.Add(index);
@@ -174,15 +166,7 @@ namespace ARWT.Foot.dataset
         private void leftFrontNulle(List<int> leftFrontNuller, IFootCollection feet, int index)
         {
 
-            if(index == 311)
-            {
-                int masdaasd = 0;
-            }
-
-            if (index == 313)
-            {
-                int masdaasd = 0;
-            }
+            
             if (feet.leftfront != null)
             {
                 leftFrontNuller.Add(index);
@@ -212,8 +196,6 @@ namespace ARWT.Foot.dataset
                         _results[i].FeetCollection.leftfront = new feetID { id = _results[max].FeetCollection.leftfront.id, value = value };
                     }
                     leftFrontNuller.Add(index);
-
-                    //leftFrontNuller.Clear();
 
                 }
 
@@ -274,7 +256,7 @@ namespace ARWT.Foot.dataset
         }
         private void leftFront(List<int> leftFrontNuller, int index, IFootCollection feet)
         {
-            Console.WriteLine(index);
+           // Console.WriteLine(index);
             
         }
        

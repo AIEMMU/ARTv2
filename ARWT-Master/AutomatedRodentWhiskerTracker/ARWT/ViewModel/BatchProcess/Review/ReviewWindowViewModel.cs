@@ -285,7 +285,56 @@ namespace ARWT.ViewModel.BatchProcess.Review
                 NotifyPropertyChanged();
             }
         }
+        private LineSegment2D addROI(LineSegment2D line)
+        {
+            LineSegment2D points = line;
+            var ROI = Results[SelectedVideo.Model].ROI;
+            points.P1 = new Point(ROI.X + points.P1.X, ROI.Y + points.P1.Y);
+           points.P2 = new Point(ROI.X + points.P2.X, ROI.Y + points.P2.Y);
+            return points;
 
+        }
+
+        private PointF[] addROI(PointF[] Points)
+        {
+            PointF[] points = new PointF[Points.Length];
+            var ROI = Results[SelectedVideo.Model].ROI;
+            for (int i = 0; i < Points.Length; i++)
+            {
+                points[i].X = Points[i].X + ROI.X;
+                points[i].Y = Points[i].Y + ROI.Y;
+            }
+
+            return points;
+        }
+        private Point[] addROI(Point[] Points)
+        {
+            Point[] points = new Point[Points.Count()];
+            var ROI = Results[SelectedVideo.Model].ROI;
+            for (int i = 0; i < Points.Count(); i++)
+            {
+                points[i].X = Points[i].X + ROI.X;
+                points[i].Y = Points[i].Y + ROI.Y;
+            }
+
+            return points;
+        }
+        private Point addROI(Point Points)
+        {
+            Point points = new Point();
+            var ROI = Results[SelectedVideo.Model].ROI;
+            points.X = Points.X + ROI.X;
+            points.X = Points.Y + ROI.Y;
+            return points;
+        }
+        private PointF addROI(PointF Points)
+        {
+            PointF points = new PointF();
+            var ROI = Results[SelectedVideo.Model].ROI;
+            points.X = Points.X + ROI.X;
+            points.Y = Points.Y + ROI.Y;
+            return points;
+        }
         private Dictionary<ISingleFile, IMouseDataExtendedResult> m_Results;
         public Dictionary<ISingleFile, IMouseDataExtendedResult> Results
         {
@@ -2070,8 +2119,10 @@ namespace ARWT.ViewModel.BatchProcess.Review
             {   
                 if(MotionTrack != null)
                 {
-                    img.DrawPolyline(MotionTrack.Select(x => x.ToPoint()).ToArray(), false, new Bgr(Color.Blue), 2);
-                    img.DrawPolyline(CentroidMotionTrack.Select(x => x.ToPoint()).ToArray(), false, new Bgr(Color.Yellow), 2);
+                    Point[] motionPoints = addROI(MotionTrack.Select(x => x.ToPoint()).ToArray());
+                    Point[] centroidPoints = addROI(CentroidMotionTrack.Select(x => x.ToPoint()).ToArray());
+                    img.DrawPolyline(motionPoints, false, new Bgr(Color.Blue), 2);
+                    img.DrawPolyline(centroidPoints, false, new Bgr(Color.Yellow), 2);
 
                     if (SliderValue >= AnalyseStart && SliderValue <= AnalyseEnd)
                     {
@@ -2079,12 +2130,14 @@ namespace ARWT.ViewModel.BatchProcess.Review
 
                         if (!frame.HeadPoint.IsEmpty)
                         {
-                            img.Draw(new CircleF(frame.HeadPoint, 2), new Bgr(Color.Red), 2);
-                            img.Draw(new CircleF(frame.Centroid, 2), new Bgr(Color.Red), 2);
+                            PointF headPoint = addROI(frame.HeadPoint);
+                            PointF centr = addROI(frame.Centroid);
+                            img.Draw(new CircleF(headPoint, 2), new Bgr(Color.Red), 2);
+                            img.Draw(new CircleF(centr, 2), new Bgr(Color.Red), 2);
 
                             if (Results != null && Results.Any() && frame.HeadPoints != null)
                             {
-                                PointF midPoint = frame.MidPoint;
+                                PointF midPoint = addROI(frame.MidPoint);
                                 // IWhiskerCollection cWhiskers = currentResult.Whiskers;
                                 IWhiskerCollection cWhiskers = frame.BestTrackedWhisker;
                                 Vector orientation = frame.Orientation;
@@ -2103,7 +2156,8 @@ namespace ARWT.ViewModel.BatchProcess.Review
                                             {
                                                 color = ColorDic[counter];
                                             }
-                                            img.Draw(whisker.Line, new Bgr(color), 1);
+                                            LineSegment2D line = addROI(whisker.Line);
+                                            img.Draw(line, new Bgr(color), 1);
                                             counter++;
                                         }
 
@@ -2121,7 +2175,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
                                         Point lp2 = new Point((int)(xs + dX), (int)(ys - dY));
 
                                         LineSegment2D lineSeg = new LineSegment2D(lp1, lp2);
-
+                                        lineSeg = addROI(lineSeg);
                                         img.Draw(lineSeg, new Bgr(Color.Cyan), 1);
                                     }
 
@@ -2137,7 +2191,8 @@ namespace ARWT.ViewModel.BatchProcess.Review
                                             {
                                                 color = ColorDic[counter];
                                             }
-                                            img.Draw(whisker.Line, new Bgr(color), 1);
+                                            LineSegment2D line = addROI(whisker.Line);
+                                            img.Draw(line, new Bgr(color), 1);
                                             counter++;
                                         }
 
@@ -2155,7 +2210,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
                                         Point lp2 = new Point((int)(xs - dX), (int)(ys - dY));
 
                                         LineSegment2D lineSeg = new LineSegment2D(lp1, lp2);
-
+                                        lineSeg = addROI(lineSeg);
                                         img.Draw(lineSeg, new Bgr(Color.Cyan), 1);
                                     }
                                 }

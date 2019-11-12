@@ -14,14 +14,14 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Image x:Name="Image" MouseDown="Image_OnMouseDown" MouseMove="Image_OnMouseMove" MouseUp="Image_OnMouseUp"  Source="{Binding Path=DisplayImage, NotifyOnTargetUpdated=True}" TargetUpdated="Image_OnTargetUpdated" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-        <Canvas x:Name="Canvas" Grid.Row="0">
+        <Image x:Name="Image"   Source="{Binding Path=DisplayImage, NotifyOnTargetUpdated=True}" TargetUpdated="Image_OnTargetUpdated" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" />
+        <Canvas x:Name="Canvas" Grid.Row="0"  MouseDown="Image_OnMouseDown" Background="Transparent" MouseMove="Image_OnMouseMove" MouseUp="Image_OnMouseUp"   TargetUpdated="Image_OnTargetUpdated">
             <Rectangle x:Name="Rectangle" Stroke="Red" StrokeDashArray="1" StrokeThickness="1"/>
             <Rectangle x:Name="PixelRectangle" Visibility="Hidden" Canvas.Left="{Binding Path=X, Mode=TwoWay}" Canvas.Top="{Binding Path=Y, Mode=TwoWay}" Width="{Binding Path=Width, Mode=TwoWay}" Height="{Binding Path=Height, Mode=TwoWay}"/>
         </Canvas>
         
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-            <Button Content="Ok" Command="{Binding Path=OkCommand}"/>
+            <Button Content="Ok" Command="{Binding Path=OkCommand}" />
             <Button Content="Cancel" Command="{Binding Path=CancelCommand}"/>
         </StackPanel>
         
