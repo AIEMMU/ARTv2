@@ -519,7 +519,13 @@ namespace ARWT.Model.RBSK2
             angles.Add(Math.Atan2(centroidY.ElementAt(HeadPoints.Count-1) - centroidY.ElementAt(HeadPoints.Count - frameCounter), centroidX.ElementAt(HeadPoints.Count-1) - centroidX.ElementAt(HeadPoints.Count - frameCounter)) * 180 / Math.PI);
             for (int i = 0; i < HeadPoints.Count; i++)
             {
-                if(i%frameCounter == 0 && !notHit)
+                if (counter == 101)
+                {
+                    int masdas = 0;
+                }
+
+
+                if (i%frameCounter == 0 && !notHit)
                 {
                     bodyContourAngle = angles[angleCounter];
                     angleCounter++;
@@ -529,9 +535,14 @@ namespace ARWT.Model.RBSK2
                 ISingleFrameExtendedResults currentFrame = HeadPoints[i];
                 
                 counter++;
+                IFootCollection footCollection = ModelResolver.Resolve<IFootCollection>();
                 if (currentFrame == null || currentFrame.BodyContour == null)
                 {
                     ProgressUpdates(this, new RBSKVideoUpdateEvent(0.5 + (((double)counter / newCount) / 2)));
+                    
+                    currentFrame.FeetCollection = footCollection;
+                         
+                    continue;
                 }
                 Video.SetFrame(i);
                 //if( i == 108)
@@ -545,7 +556,11 @@ namespace ARWT.Model.RBSK2
                 
 
                 Image<Bgr, byte> frame = Video.GetFrameImage();
-
+                Console.WriteLine(counter);
+                if (counter == 100)
+                {
+                    int masdas = 0;
+                }
                 var mask = MaskSegmentation.segmentMask(currentFrame.BodyContour, ColorSpaceProcessing.processLogSpace(frame.Clone()).Convert<Bgr, double>(), FootSettings.kernelSize, FootSettings.erosionIterations);
                 var moo2oo = ColorSpaceProcessing.processLogSpace(frame.Clone()).Convert<Bgr, double>(); 
                 //CvInvoke.Imwrite($"log_{i:D4}.png", moo2oo);
@@ -586,7 +601,7 @@ namespace ARWT.Model.RBSK2
                 ////CvInvoke.Imwrite($"{i}_frame.png", frame);
 
                 List<IfeetID> objects = feetCentroids.update(footplacement.ToArray(), centrePoint, headPoint, backPoint, currentFrame.BodyContour);
-                IFootCollection footCollection = ModelResolver.Resolve<IFootCollection>();
+               // IFootCollection footCollection = ModelResolver.Resolve<IFootCollection>();
 
                 foreach (feetID item in objects)
                 {

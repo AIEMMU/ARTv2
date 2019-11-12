@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ARWT.exe" size="1389480">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ARWT.exe" size="1389992">
       <assemblyIdentity name="ARWT" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gf7xnG/gqDZPSfvt0eTHp5M98vODLiMxLPEi/qbBYRk=</dsig:DigestValue>
+        <dsig:DigestValue>bYyjCwBwz/Zg2ZVTDo+glUnmZeW4/e+Lg0pmW7m0gZY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
