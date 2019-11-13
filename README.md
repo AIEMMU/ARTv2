@@ -40,3 +40,18 @@ whiskers within the video file.
 The software exports data calculated from the .avi files as an .xlsl file and a .ARWT
 file which stores the variables and such from the video, allowing you to directly the 
 data back into the software. 
+
+### Citations and Issues
+
+if you use this code, please cite
+```text
+@article{GILLESPIE2019108440,
+title = "Description and validation of the LocoWhisk system: Quantifying rodent exploratory, sensory and motor behaviours",
+author = "David Gillespie and Moi Hoon Yap and Brett M. Hewitt and Heather Driscoll and Ugne Simanaviciute and Emma F. Hodson-Tole and Robyn A. Grant",
+journal = "Journal of Neuroscience Methods",
+doi = "https://doi.org/10.1016/j.jneumeth.2019.108440",
+url = "http://www.sciencedirect.com/science/article/pii/S0165027019302973",
+}
+```
+
+If you have any issues or questions, please direct them either to this repository or email d.gillespie@mmu.ac.uk 
