@@ -85,6 +85,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
                 NotifyPropertyChanged();
             }
         }
+        private Rectangle ROI { get; set; }
 
         private SingleFileViewModel m_SelectedVideo;
         public SingleFileViewModel SelectedVideo
@@ -288,7 +289,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
         private LineSegment2D addROI(LineSegment2D line)
         {
             LineSegment2D points = line;
-            var ROI = Results[SelectedVideo.Model].ROI;
+            
             points.P1 = new Point(ROI.X + points.P1.X, ROI.Y + points.P1.Y);
            points.P2 = new Point(ROI.X + points.P2.X, ROI.Y + points.P2.Y);
             return points;
@@ -297,20 +298,26 @@ namespace ARWT.ViewModel.BatchProcess.Review
 
         private PointF[] addROI(PointF[] Points)
         {
+            
             PointF[] points = new PointF[Points.Length];
-            var ROI = Results[SelectedVideo.Model].ROI;
+            //var ROI = Results[SelectedVideo.Model].ROI;
+            
+            if(RbskVideo != null)
+            {
+                int moo = 0;
+            }
             for (int i = 0; i < Points.Length; i++)
             {
                 points[i].X = Points[i].X + ROI.X;
                 points[i].Y = Points[i].Y + ROI.Y;
             }
-
+            
             return points;
         }
         private Point[] addROI(Point[] Points)
         {
             Point[] points = new Point[Points.Count()];
-            var ROI = Results[SelectedVideo.Model].ROI;
+            //var ROI = Results[SelectedVideo.Model].ROI;
             for (int i = 0; i < Points.Count(); i++)
             {
                 points[i].X = Points[i].X + ROI.X;
@@ -322,7 +329,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
         private Point addROI(Point Points)
         {
             Point points = new Point();
-            var ROI = Results[SelectedVideo.Model].ROI;
+           // var ROI = Results[SelectedVideo.Model].ROI;
             points.X = Points.X + ROI.X;
             points.X = Points.Y + ROI.Y;
             return points;
@@ -330,7 +337,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
         private PointF addROI(PointF Points)
         {
             PointF points = new PointF();
-            var ROI = Results[SelectedVideo.Model].ROI;
+           // var ROI = Results[SelectedVideo.Model].ROI;
             points.X = Points.X + ROI.X;
             points.Y = Points.Y + ROI.Y;
             return points;
@@ -1903,7 +1910,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
                 
                 SingleFileViewModel vm = new SingleFileViewModel(singleFile, artFile);
                 IMouseDataExtendedResult data = results[singleFile];
-
+              
                 if (data != null)
                 {
                     vm.VideoOutcome = data.VideoOutcome;
@@ -1919,6 +1926,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
                         
                     }
                 }
+                ROI = data.ROI;
                 videos.Add(vm);
             }
 
@@ -1960,7 +1968,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
                 var allAngles = angles.GetWhiskerAngles(fileResult.Results);
                 LoadData(allAngles[0], allAngles[1]);
             }
-            
+            ROI =  fileResult.ROI;
             AreFootResults = true;
         }
 
@@ -2377,11 +2385,13 @@ namespace ARWT.ViewModel.BatchProcess.Review
                 IMouseDataExtendedResult result = Model.Results[SelectedVideo.Model];
                 try
                 {
+                    
                     IVideoSettings videoSettings = ModelResolver.Resolve<IVideoSettings>();
                     using (IRBSKVideo2 rbskVideo = ModelResolver.Resolve<IRBSKVideo2>())
                     using (IVideo video = ModelResolver.Resolve<IVideo>())
                     {
                         RbskVideo = rbskVideo;
+                        ROI = rbskVideo.Roi;
                         video.SetVideo(fileName);
                         if (video.FrameCount < 100)
                         {
