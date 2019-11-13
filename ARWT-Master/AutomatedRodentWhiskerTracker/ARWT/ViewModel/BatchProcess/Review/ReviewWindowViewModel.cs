@@ -1789,6 +1789,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
             using (Image<Gray, byte> gray = CurrentImage.Convert<Gray, byte>())
             {
                 whiskers = rbsk.ProcessWhiskersForSingleFrame(gray, headPoints, bodyPoints);
+               
                 headPoint = headPoints[2];
                 if (WhiskerSettings.RemoveDuds)
                 {
@@ -1805,10 +1806,13 @@ namespace ARWT.ViewModel.BatchProcess.Review
             
             using (Image<Bgr, Byte> img = CurrentImage.Clone())
             {
-                img.DrawPolyline(MotionTrack.Select(x => x.ToPoint()).ToArray(), false, new Bgr(Color.Blue), 2);
+                headPoints = addROI(headPoints);
+                var motionTrack = addROI(MotionTrack.Select(x => x.ToPoint()).ToArray());
+                img.DrawPolyline(motionTrack, false, new Bgr(Color.Blue), 2);
 
                 if (headPoints != null)
                 {
+                    
                     foreach (PointF point in headPoints)
                     {
                         img.Draw(new CircleF(point, 2), new Bgr(Color.Yellow), 2);
@@ -1823,7 +1827,8 @@ namespace ARWT.ViewModel.BatchProcess.Review
                             foreach (IWhiskerSegment whisker in finalWhiskers.LeftWhiskers)
                             {
                                 Color color = Color.White;
-                                img.Draw(whisker.Line, new Bgr(color), 1);
+                                var line = addROI(whisker.Line);
+                                img.Draw(line, new Bgr(color), 1);
                             }
 
                         }
@@ -1833,7 +1838,8 @@ namespace ARWT.ViewModel.BatchProcess.Review
                             foreach (IWhiskerSegment whisker in finalWhiskers.RightWhiskers)
                             {
                                 Color color = Color.White;
-                                img.Draw(whisker.Line, new Bgr(color), 1);
+                                var line = addROI(whisker.Line);
+                                img.Draw(line, new Bgr(color), 1);
                             }
                         }
                     }
