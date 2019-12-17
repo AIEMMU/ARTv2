@@ -319,11 +319,11 @@ namespace ARWT.ViewModel.BatchProcess
             ObservableCollection<SingleMouseViewModel> currentList = new ObservableCollection<SingleMouseViewModel>(TgItemsSource);
 
             string[] files = Directory.GetFiles(folderLocation);
-
+            Array.Sort(files, StringComparer.InvariantCulture);
             foreach (string file in files)
             {
                 string extension = Path.GetExtension(file);
-
+                
                 if (CheckIfExtensionIsVideo(extension))
                 {
                     ISingleMouse newFile = ModelResolver.Resolve<ISingleMouse>();

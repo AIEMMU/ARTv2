@@ -556,11 +556,8 @@ namespace ARWT.Model.RBSK2
                 
 
                 Image<Bgr, byte> frame = Video.GetFrameImage();
-                Console.WriteLine(counter);
-                if (counter == 100)
-                {
-                    int masdas = 0;
-                }
+               // Console.WriteLine(counter);
+                
                 var mask = MaskSegmentation.segmentMask(currentFrame.BodyContour, ColorSpaceProcessing.processLogSpace(frame.Clone()).Convert<Bgr, double>(), FootSettings.kernelSize, FootSettings.erosionIterations);
                 var moo2oo = ColorSpaceProcessing.processLogSpace(frame.Clone()).Convert<Bgr, double>(); 
                 //CvInvoke.Imwrite($"log_{i:D4}.png", moo2oo);

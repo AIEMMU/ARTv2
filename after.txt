@@ -1,0 +1,11 @@
+if you use this code, please cite:
+
+@article{GILLESPIE2019108440,
+title = "Description and validation of the LocoWhisk system: Quantifying rodent exploratory, sensory and motor behaviours",
+author = "David Gillespie and Moi Hoon Yap and Brett M. Hewitt and Heather Driscoll and Ugne Simanaviciute and Emma F. Hodson-Tole and Robyn A. Grant",
+journal = "Journal of Neuroscience Methods",
+doi = "https://doi.org/10.1016/j.jneumeth.2019.108440",
+url = "http://www.sciencedirect.com/science/article/pii/S0165027019302973",
+}
+
+If you have any issues or questions, please direct them either to this repository or email d.gillespie@mmu.ac.uk 
