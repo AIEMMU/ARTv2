@@ -17,7 +17,12 @@ namespace ARWT.Model.RBSK2
             get;
             set;
         }
-
+        [XmlElement(ElementName = "RepeatSmoothing")]
+        public int RepeatSmoothing 
+        {
+            get;
+            set;
+        }
         [XmlElement(ElementName = "InterpolationType")]
         public int InterpolationType
         {
@@ -75,6 +80,7 @@ namespace ARWT.Model.RBSK2
         public WhiskerVideoSettingsXml(IWhiskerVideoSettings settings)
         {
             CropScaleFactor = settings.CropScaleFactor;
+            RepeatSmoothing = settings.RepeatSmooths;
             InterpolationType = (int)settings.InterpolationType;
             LineMinIntensity = settings.LineMinIntensity;
             LowerBound = settings.LowerBound;
@@ -88,6 +94,7 @@ namespace ARWT.Model.RBSK2
         {
             WhiskerVideoSettings settings = new WhiskerVideoSettings();
             settings.CropScaleFactor = CropScaleFactor;
+            settings.RepeatSmooths = RepeatSmoothing;
             settings.InterpolationType = (Inter)InterpolationType;
             settings.LineMinIntensity = LineMinIntensity;
             settings.LowerBound = LowerBound;

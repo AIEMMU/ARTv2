@@ -43,26 +43,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ArtLibrary.dll" size="152576">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ArtLibrary.dll" size="169984">
       <assemblyIdentity name="ArtLibrary" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Trj59/g8tZVlfJJ0R3EMgcGYra1gYyt97pFEoOYjO6o=</dsig:DigestValue>
+        <dsig:DigestValue>+EymlCSXrCmQ80A4KMxrmYdeh6sRDHtrpjqpbTv+sYA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ARWT.exe" size="1388968">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ARWT.exe" size="1390504">
       <assemblyIdentity name="ARWT" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BM0iCLodKwCX9eJaSN/0VNA/hEq2934F2sP+8O7k/Oo=</dsig:DigestValue>
+        <dsig:DigestValue>p2hcRi4ksy5g4BwHAt3iUJkr6sljWeQDan+gKjjvHE0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

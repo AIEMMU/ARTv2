@@ -14,7 +14,11 @@ namespace ARWT.ModelInterface.RBSK2
             get;
             set;
         }
-
+        int RepeatSmooths
+        {
+            get;
+            set;
+        }
         Inter InterpolationType
         {
             get;

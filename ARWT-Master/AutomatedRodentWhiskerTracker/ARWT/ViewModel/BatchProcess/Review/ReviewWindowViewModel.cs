@@ -1742,22 +1742,22 @@ namespace ARWT.ViewModel.BatchProcess.Review
                 UpdateSmoothing();
             }
         }
-
+        
         private int _RepeatSmooths = 1;
         public int RepeatSmooths
         {
             get
             {
-                return _RepeatSmooths;
+                return WhiskerSettings.RepeatSmooths;
             }
             set
             {
-                if (Equals(_RepeatSmooths, value))
+                if (Equals(WhiskerSettings.RepeatSmooths, value))
                 {
                     return;
                 }
 
-                _RepeatSmooths = value;
+                WhiskerSettings.RepeatSmooths = value;
 
                 NotifyPropertyChanged();
                 UpdateSmoothing();
@@ -1964,6 +1964,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
             angles.EndFrame = 0;
             if(fileResult.Results != null)
             {
+                angles.StartFrame = fileResult.StartFrame;
                 angles.EndFrame = fileResult.Results.Count - 1;
                 var allAngles = angles.GetWhiskerAngles(fileResult.Results);
                 LoadData(allAngles[0], allAngles[1]);
@@ -2068,6 +2069,13 @@ namespace ARWT.ViewModel.BatchProcess.Review
                 erosionIterations = FootSettings.erosionIterations;
                 contourDistance = FootSettings.contourDistance;
                 AnalyseEnd = CurrentResult.EndFrame;
+                AnalyseStart = CurrentResult.StartFrame;
+                CropScaleFactor = WhiskerSettings.CropScaleFactor;
+                ResolutionIncreaseScaleFactor = WhiskerSettings.ResolutionIncreaseScaleFactor;
+                LowerBound = WhiskerSettings.LowerBound;
+                UpperBound = WhiskerSettings.UpperBound;
+                LineThreshold = WhiskerSettings.LineMinIntensity;
+                RepeatSmooths = WhiskerSettings.RepeatSmooths;
                 DistanceTravelled = CurrentResult.DistanceTravelled;
                 CentroidDistanceTravelled = CurrentResult.CentroidDistanceTravelled;
                 MotionTrack = CurrentResult.MotionTrack;

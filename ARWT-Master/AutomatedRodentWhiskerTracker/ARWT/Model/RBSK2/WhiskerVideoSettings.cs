@@ -30,7 +30,25 @@ namespace ARWT.Model.RBSK2
                 MarkAsDirty();
             }
         }
+        private int _RepeatSmooths;
+        public int RepeatSmooths
+        {
+            get
+            {
+                return _RepeatSmooths;
+            }
+            set
+            {
+                if (Equals(_RepeatSmooths, value))
+                {
+                    return;
+                }
 
+                _RepeatSmooths = value;
+
+                MarkAsDirty();
+            }
+        }
         private Inter _InterpolationType;
         public Inter InterpolationType
         {
@@ -176,6 +194,7 @@ namespace ARWT.Model.RBSK2
         {
             RemoveDuds = true;
             CropScaleFactor = 4;
+            RepeatSmooths = 1;
             ResolutionIncreaseScaleFactor = 2;
             InterpolationType = Inter.Area;
             OrientationResolution = 1;
@@ -189,6 +208,7 @@ namespace ARWT.Model.RBSK2
             IWhiskerVideoSettings clone = ModelResolver.Resolve<IWhiskerVideoSettings>();
 
             clone.CropScaleFactor = CropScaleFactor;
+            clone.RepeatSmooths = RepeatSmooths;
             clone.InterpolationType = InterpolationType;
             clone.LineMinIntensity = LineMinIntensity;
             clone.LowerBound = LowerBound;
