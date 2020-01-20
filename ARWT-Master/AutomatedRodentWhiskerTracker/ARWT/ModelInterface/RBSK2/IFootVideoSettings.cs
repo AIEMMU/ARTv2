@@ -8,6 +8,7 @@ namespace ARWT.ModelInterface.RBSK2
 {
     public interface IFootVideoSettings: IModelObjectBase
     {
+        bool track { get; set; }
         int area { get; set; }
         int contourDistance { get; set; }
         int kernelSize { get; set; }

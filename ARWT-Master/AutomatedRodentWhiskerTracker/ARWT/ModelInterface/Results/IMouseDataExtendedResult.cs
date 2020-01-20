@@ -14,6 +14,7 @@ namespace ARWT.ModelInterface.Results
 {
     public interface IMouseDataExtendedResult : IModelObjectBase
     {
+       
         string Name
         {
             get;

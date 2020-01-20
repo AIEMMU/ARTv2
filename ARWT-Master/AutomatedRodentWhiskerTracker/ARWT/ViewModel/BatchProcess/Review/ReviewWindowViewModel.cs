@@ -1297,7 +1297,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
             set;
         }
 
-        private IWhiskerVideoSettings WhiskerSettings
+        /*private IWhiskerVideoSettings WhiskerSettings
         {
             get;
             set;
@@ -1306,6 +1306,46 @@ namespace ARWT.ViewModel.BatchProcess.Review
         {
             get;
             set;
+        }*/
+
+        private IFootVideoSettings m_FootSettings;
+        public IFootVideoSettings FootSettings
+        {
+            get
+            {
+                return m_FootSettings;
+            }
+            set
+            {
+                if (Equals(m_FootSettings, value))
+                {
+                    return;
+                }
+
+                m_FootSettings = value;
+
+                NotifyPropertyChanged();
+            }
+        }
+
+        private IWhiskerVideoSettings m_WhiskerSettings;
+        public IWhiskerVideoSettings WhiskerSettings
+        {
+            get
+            {
+                return m_WhiskerSettings;
+            }
+            set
+            {
+                if (Equals(m_WhiskerSettings, value))
+                {
+                    return;
+                }
+
+                m_WhiskerSettings = value;
+
+                NotifyPropertyChanged();
+            }
         }
         public bool RemoveDuds
         {
@@ -1344,6 +1384,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
             {
                 _scaleFactor = value;
                 NotifyPropertyChanged();
+                
                 CurrentResult.FootSettings.scaleFactor = Math.Abs(value);
             }
         }
@@ -1395,16 +1436,16 @@ namespace ARWT.ViewModel.BatchProcess.Review
         {
             get
             {
-                return WhiskerSettings.LineMinIntensity;
+                return CurrentResult.WhiskerSettings.LineMinIntensity;
             }
             set
             {
-                if (Equals(WhiskerSettings.LineMinIntensity))
+                if (Equals(CurrentResult.WhiskerSettings.LineMinIntensity))
                 {
                     return;
                 }
 
-                WhiskerSettings.LineMinIntensity = value;
+                CurrentResult.WhiskerSettings.LineMinIntensity = value;
 
                 NotifyPropertyChanged();
             }
@@ -1414,16 +1455,16 @@ namespace ARWT.ViewModel.BatchProcess.Review
         {
             get
             {
-                return WhiskerSettings.LowerBound;
+                return CurrentResult.WhiskerSettings.LowerBound;
             }
             set
             {
-                if (Equals(WhiskerSettings.LowerBound, value))
+                if (Equals(CurrentResult.WhiskerSettings.LowerBound, value))
                 {
                     return;
                 }
 
-                WhiskerSettings.LowerBound = value;
+                CurrentResult.WhiskerSettings.LowerBound = value;
 
                 NotifyPropertyChanged();
             }
@@ -1433,16 +1474,16 @@ namespace ARWT.ViewModel.BatchProcess.Review
         {
             get
             {
-                return WhiskerSettings.UpperBound;
+                return CurrentResult.WhiskerSettings.UpperBound;
             }
             set
             {
-                if (Equals(WhiskerSettings.UpperBound, value))
+                if (Equals(CurrentResult.WhiskerSettings.UpperBound, value))
                 {
                     return;
                 }
 
-                WhiskerSettings.UpperBound = value;
+                CurrentResult.WhiskerSettings.UpperBound = value;
 
                 NotifyPropertyChanged();
             }
@@ -1452,16 +1493,16 @@ namespace ARWT.ViewModel.BatchProcess.Review
         {
             get
             {
-                return WhiskerSettings.CropScaleFactor;
+                return CurrentResult.WhiskerSettings.CropScaleFactor;
             }
             set
             {
-                if (Equals(WhiskerSettings.CropScaleFactor, value))
+                if (Equals(CurrentResult.WhiskerSettings.CropScaleFactor, value))
                 {
                     return;
                 }
 
-                WhiskerSettings.CropScaleFactor = value;
+                CurrentResult.WhiskerSettings.CropScaleFactor = value;
 
                 NotifyPropertyChanged();
             }
@@ -1471,16 +1512,16 @@ namespace ARWT.ViewModel.BatchProcess.Review
         {
             get
             {
-                return WhiskerSettings.ResolutionIncreaseScaleFactor;
+                return CurrentResult.WhiskerSettings.ResolutionIncreaseScaleFactor;
             }
             set
             {
-                if (Equals(WhiskerSettings.ResolutionIncreaseScaleFactor, value))
+                if (Equals(CurrentResult.WhiskerSettings.ResolutionIncreaseScaleFactor, value))
                 {
                     return;
                 }
 
-                WhiskerSettings.ResolutionIncreaseScaleFactor = value;
+                CurrentResult.WhiskerSettings.ResolutionIncreaseScaleFactor = value;
 
                 NotifyPropertyChanged();
             }
@@ -1490,36 +1531,36 @@ namespace ARWT.ViewModel.BatchProcess.Review
         {
             get
             {
-                return WhiskerSettings.InterpolationType;
+                return CurrentResult.WhiskerSettings.InterpolationType;
             }
             set
             {
-                if (Equals(WhiskerSettings.InterpolationType, value))
+                if (Equals(CurrentResult.WhiskerSettings.InterpolationType, value))
                 {
                     return;
                 }
 
-                WhiskerSettings.InterpolationType = value;
+                CurrentResult.WhiskerSettings.InterpolationType = value;
 
                 NotifyPropertyChanged();
             }
         }
 
-        private bool _IncludeFeets = true;
+        private bool _IncludeFeets ;
         public bool IncludeFeet
         {
             get
             {
-                return _IncludeFeets;
+                return CurrentResult.FootSettings.track;
             }
             set
             {
-                if (Equals(_IncludeFeets, value))
+                if (Equals(CurrentResult.FootSettings.track, value))
                 {
                     return;
                 }
 
-                _IncludeFeets = value;
+                CurrentResult.FootSettings.track = value;
 
                 NotifyPropertyChanged();
             }
@@ -1529,16 +1570,16 @@ namespace ARWT.ViewModel.BatchProcess.Review
         {
             get
             {
-                return _IncludeWhiskers;
+                return CurrentResult.WhiskerSettings.track;
             }
             set
             {
-                if (Equals(_IncludeWhiskers, value))
+                if (Equals(CurrentResult.WhiskerSettings.track, value))
                 {
                     return;
                 }
 
-                _IncludeWhiskers = value;
+                CurrentResult.WhiskerSettings.track = value;
 
                 NotifyPropertyChanged();
             }
@@ -1748,16 +1789,16 @@ namespace ARWT.ViewModel.BatchProcess.Review
         {
             get
             {
-                return WhiskerSettings.RepeatSmooths;
+                return CurrentResult.WhiskerSettings.RepeatSmooths;
             }
             set
             {
-                if (Equals(WhiskerSettings.RepeatSmooths, value))
+                if (Equals(CurrentResult.WhiskerSettings.RepeatSmooths, value))
                 {
                     return;
                 }
 
-                WhiskerSettings.RepeatSmooths = value;
+                CurrentResult.WhiskerSettings.RepeatSmooths = value;
 
                 NotifyPropertyChanged();
                 UpdateSmoothing();
@@ -1798,7 +1839,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
                 whiskers = rbsk.ProcessWhiskersForSingleFrame(gray, headPoints, bodyPoints);
                
                 headPoint = headPoints[2];
-                if (WhiskerSettings.RemoveDuds)
+                if (CurrentResult.WhiskerSettings.RemoveDuds)
                 {
                     
                     PointF midPoint = headPoints[1].MidPoint(headPoints[3]);

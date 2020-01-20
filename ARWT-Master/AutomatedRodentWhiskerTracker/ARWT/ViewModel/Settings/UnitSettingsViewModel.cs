@@ -261,8 +261,8 @@ namespace RobynsWhiskerTracker.ViewModel.Setings
 
         private void BrowseForUnitVideo()
         {
-            string filePath = FileBrowser.BroseForVideoFiles();
-
+            string filePath = FileBrowser.BrowseForVideoFiles();
+            
             if (string.IsNullOrWhiteSpace(filePath))
             {
                 return;

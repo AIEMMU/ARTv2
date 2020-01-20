@@ -9,6 +9,10 @@ namespace ARWT.ModelInterface.RBSK2
 {
     public interface IWhiskerVideoSettings : IModelObjectBase
     {
+        bool track
+        {
+            get;set;
+        }
         double CropScaleFactor
         {
             get;

@@ -22,6 +22,7 @@ namespace ARWT.Model.Results
 {
     internal class MouseDataExtendedResult : ModelObjectBase, IMouseDataExtendedResult
     {
+        
         private int m_Age;
         public int Age
         {

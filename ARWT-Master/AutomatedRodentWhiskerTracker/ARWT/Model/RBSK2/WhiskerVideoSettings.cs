@@ -128,6 +128,25 @@ namespace ARWT.Model.RBSK2
                 MarkAsDirty();
             }
         }
+        private bool _track;
+        public bool track
+        {
+            get
+            {
+                return _track;
+            }
+            set
+            {
+                if (Equals(_track, value))
+                {
+                    return;
+                }
+
+                _track = value;
+
+                MarkAsDirty();
+            }
+        }
 
         private byte _LineMinIntensity;
         public byte LineMinIntensity
@@ -201,6 +220,7 @@ namespace ARWT.Model.RBSK2
             LineMinIntensity = 150;
             LowerBound = 7;
             UpperBound = 10;
+            track = true;
         }
 
         public IWhiskerVideoSettings Clone()
@@ -216,7 +236,7 @@ namespace ARWT.Model.RBSK2
             clone.RemoveDuds = RemoveDuds;
             clone.ResolutionIncreaseScaleFactor = ResolutionIncreaseScaleFactor;
             clone.UpperBound = UpperBound;
-
+            clone.track = track;
             return clone;
         }
     }

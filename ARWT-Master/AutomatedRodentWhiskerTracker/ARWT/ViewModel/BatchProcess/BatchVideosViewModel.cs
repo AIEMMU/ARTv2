@@ -252,14 +252,14 @@ namespace ARWT.ViewModel.BatchProcess
 
         private void AddTgFile()
         {
-            string fileLocation = FileBrowser.BroseForVideoFiles();
-
-            if (string.IsNullOrWhiteSpace(fileLocation))
-            {
-                return;
-            }
-
+            string fileLocation= FileBrowser.BrowseForVideoFiles();
             ObservableCollection<string> currentList = new ObservableCollection<string>(TgItemsSource);
+
+                       if (string.IsNullOrWhiteSpace(fileLocation))
+                {
+                    return;
+                }
+
             currentList.Add(fileLocation);
             TgItemsSource = currentList;
         }
@@ -319,7 +319,7 @@ namespace ARWT.ViewModel.BatchProcess
 
         private void AddNtgFile()
         {
-            string fileLocation = FileBrowser.BroseForVideoFiles();
+            string fileLocation = FileBrowser.BrowseForVideoFiles();
 
             if (string.IsNullOrWhiteSpace(fileLocation))
             {

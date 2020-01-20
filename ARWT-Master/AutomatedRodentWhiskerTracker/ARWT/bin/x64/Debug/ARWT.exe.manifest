@@ -50,19 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+EymlCSXrCmQ80A4KMxrmYdeh6sRDHtrpjqpbTv+sYA=</dsig:DigestValue>
+        <dsig:DigestValue>m9t3vT1sdZsmq8uVrNRNXeNTXc0839zfh+gVt5kB8qE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ARWT.exe" size="1390504">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ARWT.exe" size="1393576">
       <assemblyIdentity name="ARWT" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>p2hcRi4ksy5g4BwHAt3iUJkr6sljWeQDan+gKjjvHE0=</dsig:DigestValue>
+        <dsig:DigestValue>//bRf6CK4lxwpSo+4zU9k6PjBrT7sx+ccGngsYCt3WY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

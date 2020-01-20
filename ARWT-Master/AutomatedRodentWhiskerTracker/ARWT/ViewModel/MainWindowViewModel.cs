@@ -1576,7 +1576,7 @@ namespace ARWT.ViewModel
                     return;
                 }
 
-                string newFilePath = FileBrowser.BroseForVideoFiles();
+                string newFilePath = FileBrowser.BrowseForVideoFiles();
 
                 if (string.IsNullOrWhiteSpace(newFilePath))
                 {

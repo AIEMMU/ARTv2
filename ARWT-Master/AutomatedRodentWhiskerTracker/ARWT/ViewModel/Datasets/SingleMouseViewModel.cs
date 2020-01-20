@@ -481,16 +481,43 @@ namespace ARWT.ViewModel.Datasets
             get;
             set;
         }
-
+        private IWhiskerVideoSettings _WhiskerSettings;
         public IWhiskerVideoSettings WhiskerSettings
         {
-            get;
-            set;
+            get
+            {
+                return _WhiskerSettings;
+            }
+            set
+            {
+                if (Equals(_WhiskerSettings, value))
+                {
+                    return;
+                }
+
+                _WhiskerSettings = value;
+                NotifyPropertyChanged();
+            }
         }
+
+
+        private IFootVideoSettings _FootSettings;
         public IFootVideoSettings FootSettings
         {
-            get;
-            set;
+            get
+            {
+                return _FootSettings;
+            }
+            set
+            {
+                if (Equals(_FootSettings, value))
+                {
+                    return;
+                }
+
+                _FootSettings = value;
+                NotifyPropertyChanged();
+            }
         }
 
         public SingleMouseViewModel(ISingleMouse model)
@@ -504,7 +531,7 @@ namespace ARWT.ViewModel.Datasets
             ThresholdValue2 = 10;
             GapDistance = 35;
             SmoothMotion = true;
-
+            
             WhiskerSettings = ModelResolver.Resolve<IWhiskerVideoSettings>();
             WhiskerSettings.AssignDefaultValues();
 
@@ -674,8 +701,8 @@ namespace ARWT.ViewModel.Datasets
                         rbskVideo.Roi = ROI;
                         rbskVideo.WhiskerSettings = WhiskerSettings;
                         rbskVideo.FootSettings = FootSettings;
-                        rbskVideo.FindWhiskers = true;
-                        rbskVideo.FindFoot = true;
+                        rbskVideo.FindWhiskers = WhiskerSettings.track;
+                        rbskVideo.FindFoot = FootSettings.track;
                         rbskVideo.ProgressUpdates += (s, e) => UpdateProgress(file, e.Progress);
                         rbskVideo.Process();
 
@@ -690,7 +717,7 @@ namespace ARWT.ViewModel.Datasets
                         result.MinInteractionDistance = 15;
                         result.ThresholdValue = rbskVideo.ThresholdValue;
                         result.ThresholdValue2 = rbskVideo.ThresholdValue2;
-                        result.WhiskerSettings = WhiskerSettings;
+                        //result.WhiskerSettings = WhiskerSettings;
                         result.FootSettings = rbskVideo.FootSettings;
                         result.Results = rbskVideo.HeadPoints;
                         result.ResetFrames();

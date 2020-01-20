@@ -71,7 +71,12 @@ namespace ARWT.Model.RBSK2
             get;
             set;
         }
-
+        [XmlElement(ElementName = "track")]
+        public bool track
+        {
+            get;
+            set;
+        }
         public WhiskerVideoSettingsXml()
         {
             
@@ -79,6 +84,7 @@ namespace ARWT.Model.RBSK2
 
         public WhiskerVideoSettingsXml(IWhiskerVideoSettings settings)
         {
+            track = settings.track;
             CropScaleFactor = settings.CropScaleFactor;
             RepeatSmoothing = settings.RepeatSmooths;
             InterpolationType = (int)settings.InterpolationType;
@@ -93,6 +99,7 @@ namespace ARWT.Model.RBSK2
         public IWhiskerVideoSettings GetWhiskerVideoSettings()
         {
             WhiskerVideoSettings settings = new WhiskerVideoSettings();
+            settings.track = track;
             settings.CropScaleFactor = CropScaleFactor;
             settings.RepeatSmooths = RepeatSmoothing;
             settings.InterpolationType = (Inter)InterpolationType;

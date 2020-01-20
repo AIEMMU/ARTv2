@@ -26,9 +26,24 @@ namespace ARWT.Services
             return string.Empty;
         }
 
-        public static string BroseForVideoFiles()
+        public static string[] BroseForVideoFiles()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            openFileDialog.Filter = "Video Files|*.avi;*.mpg;*.mpeg;*.mp4;*.mov";
+
+            bool? result = openFileDialog.ShowDialog();
+
+            if (result == true)
+            {
+                return openFileDialog.FileNames;
+            }
+            return new string[] { };
+        }
+        public static string BrowseForVideoFiles()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
             openFileDialog.Filter = "Video Files|*.avi;*.mpg;*.mpeg;*.mp4;*.mov";
 
             bool? result = openFileDialog.ShowDialog();
@@ -37,10 +52,8 @@ namespace ARWT.Services
             {
                 return openFileDialog.FileName;
             }
-
             return string.Empty;
         }
-
         public static string BrowseForFile(string fileTypes, string title = "")
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();

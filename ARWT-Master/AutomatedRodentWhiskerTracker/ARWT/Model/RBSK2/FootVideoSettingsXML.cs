@@ -37,7 +37,12 @@ namespace ARWT.Model.RBSK2
             get;
             set;
         }
-        
+        [XmlElement(ElementName = "track")]
+        public bool track
+        {
+            get;
+            set;
+        }
         [XmlElement(ElementName = "ErosionIterations")]
         public int erosionIterations
         {
@@ -55,6 +60,7 @@ namespace ARWT.Model.RBSK2
             kernelSize = settings.kernelSize;
             contourDistance = settings.contourDistance;
             erosionIterations = settings.erosionIterations;
+            track = settings.track;
         }
         public IFootVideoSettings getFootVideoSettings()
         {
@@ -64,6 +70,7 @@ namespace ARWT.Model.RBSK2
             settings.scaleFactor = scaleFactor;
             settings.erosionIterations = erosionIterations;
             settings.kernelSize = kernelSize;
+            settings.track = track;
 
             return settings;
         }

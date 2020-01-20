@@ -62,6 +62,18 @@ namespace ARWT.Model.RBSK2
                 MarkAsDirty();
             }
         }
+
+        private bool _track;
+
+        public bool track
+        {
+            get { return _track; }
+            set
+            {
+                _track = value;
+                MarkAsDirty();
+            }
+        }
         public void AssignDefaultValues()
         {
             area = 10;
@@ -69,7 +81,8 @@ namespace ARWT.Model.RBSK2
             scaleFactor = 2;
             kernelSize = 3;
             erosionIterations = 14;
-        }
+            track = false;
+            }
 
         public IFootVideoSettings Clone()
         {
@@ -78,6 +91,7 @@ namespace ARWT.Model.RBSK2
             clone.contourDistance = contourDistance;
             clone.scaleFactor = scaleFactor;
             clone.kernelSize = kernelSize;
+            clone.track = track;
             return clone;
         }
     }

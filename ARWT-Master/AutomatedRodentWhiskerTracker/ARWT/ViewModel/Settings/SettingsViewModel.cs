@@ -513,7 +513,44 @@ namespace ARWT.ViewModel.Settings
                 NotifyPropertyChanged();
             }
         }
+        private bool m_trackWhiskers;
+        public bool trackWhiskers
+        {
+            get
+            {
+                return WhiskerSettings.track;
+            }
+            set
+            {
+                if (Equals(m_trackWhiskers, value))
+                {
+                    return;
+                }
 
+                m_trackWhiskers = value;
+                WhiskerSettings.track = value;
+                NotifyPropertyChanged();
+            }
+        }
+        private bool m_trackFeet;
+        public bool trackFeet
+        {
+            get
+            {
+                return FootVideoSettings.track;
+            }
+            set
+            {
+                if (Equals(m_trackFeet, value))
+                {
+                    return;
+                }
+
+                m_trackFeet = value;
+                FootVideoSettings.track = value;
+                NotifyPropertyChanged();
+            }
+        }
         private double m_FrameRate;
         public double FrameRate
         {
@@ -553,7 +590,7 @@ namespace ARWT.ViewModel.Settings
                 NotifyPropertyChanged();
             }
         }
-
+        
         private ActionCommand _SetRoiCommand;
         public ActionCommand SetRoiCommand
         {
@@ -641,18 +678,26 @@ namespace ARWT.ViewModel.Settings
 
         public SettingsViewModel(IEnumerable<SingleMouseViewModel> mice)
         {
+            WhiskerSettings = ModelResolver.Resolve<IWhiskerVideoSettings>();
+            WhiskerSettings.AssignDefaultValues();
+        
+            FootVideoSettings = ModelResolver.Resolve<IFootVideoSettings>();
+            FootVideoSettings.AssignDefaultValues();
+
             GapDistanceMin = 5;
             GapDistanceMax = 300;
             BinaryThresholdMin = 0;
             BinaryThresholdMax = 255;
             BinaryThreshold2Min = 0;
             BinaryThreshold2Max = 255;
-            
+
             m_GapDistance = 35;
             m_BinaryThreshold = 20;
             m_BinaryThreshold2 = 10;
             SmoothMotion = true;
-
+            trackFeet = FootVideoSettings.track;
+            trackWhiskers = WhiskerSettings.track;
+            setupSettings();
             SingleMouseViewModel firstMouse = mice.FirstOrDefault();
             if (firstMouse != null)
             {
@@ -662,7 +707,8 @@ namespace ARWT.ViewModel.Settings
                 SmoothMotion = firstMouse.SmoothMotion;
                 WhiskerSettings = firstMouse.WhiskerSettings;
                 FootVideoSettings = firstMouse.FootSettings;
-                
+                trackFeet = firstMouse.FootSettings.track;
+                trackWhiskers = firstMouse.WhiskerSettings.track;
             }
 
             ObservableCollection<SingleFileViewModel> singleFiles = new ObservableCollection<SingleFileViewModel>();
@@ -680,9 +726,24 @@ namespace ARWT.ViewModel.Settings
             {
                 video.SetVideo(Mice.First().VideoFileName);
                 FrameRate = video.FrameRate;
+
             }
 
             SelectedMouse = Mice.First();
+        }
+
+        private void setupSettings()
+        {
+           /* if (WhiskerSettings == null)
+            {
+                WhiskerSettings = ModelResolver.Resolve<IWhiskerVideoSettings>();
+                WhiskerSettings.AssignDefaultValues();
+            }
+            if (FootVideoSettings == null)
+            {
+                FootVideoSettings = ModelResolver.Resolve<IFootVideoSettings>();
+                FootVideoSettings.AssignDefaultValues();
+            }*/
         }
 
         private void Ok()
@@ -783,11 +844,30 @@ namespace ARWT.ViewModel.Settings
 
             Video = ModelResolver.Resolve<IVideo>();
             Video.SetVideo(SelectedMouse.VideoFileName);
+            ///changeSettings();
             Maximum = Video.FrameCount - 1;
             Minimum = 0;
             m_SliderValue = -1;
             SliderValue = 0;
             ShowVideo = true;
+        }
+
+        private void changeSettings()
+        {
+            IRBSKVideo2 rbskVideo = ModelResolver.Resolve<IRBSKVideo2>();
+            rbskVideo.Video = Video;
+            WhiskerSettings = rbskVideo.WhiskerSettings;
+            /*if (WhiskerSettings == null)
+            {
+                WhiskerSettings = ModelResolver.Resolve<IWhiskerVideoSettings>();
+                WhiskerSettings.AssignDefaultValues();
+            }
+            FootVideoSettings = rbskVideo.FootSettings;
+            if (FootVideoSettings == null)
+            {
+                FootVideoSettings = ModelResolver.Resolve<IFootVideoSettings>();
+                FootVideoSettings.AssignDefaultValues();
+            }*/
         }
 
         private void SetRoi()
@@ -851,14 +931,21 @@ namespace ARWT.ViewModel.Settings
             rbskVideo.Video = Video;
             rbskVideo.BackgroundImage = BinaryBackground;
             rbskVideo.ThresholdValue = BinaryThreshold;
+            
             rbskVideo.Roi = ROI;
             rbskVideo.GapDistance = GapDistance;
-            rbskVideo.WhiskerSettings = WhiskerSettings;
+           if (rbskVideo.WhiskerSettings == null)
+            {
+                rbskVideo.WhiskerSettings= WhiskerSettings;
+                rbskVideo.FootSettings = FootVideoSettings;
+            }
+           //rbskVideo.WhiskerSettings = WhiskerSettings;
 
             NewWhiskerSessionView view = new NewWhiskerSessionView();
             NewWhiskerSessionViewModel vm = new NewWhiskerSessionViewModel(rbskVideo, SelectedMouse.VideoFileName);
             view.DataContext = vm;
             view.ShowDialog();
+            
         }
 
         private void ShowFeetSettings()
@@ -876,7 +963,8 @@ namespace ARWT.ViewModel.Settings
             rbskVideo.GapDistance = GapDistance;
             rbskVideo.WhiskerSettings = WhiskerSettings;
             rbskVideo.FootSettings = FootVideoSettings;
-
+            rbskVideo.FindFoot = FootVideoSettings.track;
+            rbskVideo.FindWhiskers = WhiskerSettings.track;
             NewFootTrackingSessionView view = new NewFootTrackingSessionView(new FootTrackingViewModel(new FootSettingsDataService(), Video, rbskVideo, SelectedMouse.VideoFileName));
             
             view.ShowDialog();

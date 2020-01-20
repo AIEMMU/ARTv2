@@ -29,6 +29,7 @@ using System.Xml.Serialization;
 using ARWT.Commands;
 using ARWT.Model.Results;
 using ARWT.ModelInterface.Datasets;
+using ARWT.ModelInterface.RBSK2;
 using ARWT.ModelInterface.Results;
 using ARWT.ModelInterface.Smoothing;
 using ARWT.Repository;
@@ -277,23 +278,28 @@ namespace ARWT.ViewModel.BatchProcess
 
         private void AddTgFile()
         {
-            string fileLocation = FileBrowser.BroseForVideoFiles();
-
-            if (string.IsNullOrWhiteSpace(fileLocation))
+            string[] fileLocations = FileBrowser.BroseForVideoFiles();
+            ObservableCollection<SingleMouseViewModel> currentList = new ObservableCollection<SingleMouseViewModel>(TgItemsSource);
+            foreach(string fileLocation in fileLocations)
             {
-                return;
-            }
-
-
-            ISingleMouse newFile = ModelResolver.Resolve<ISingleMouse>();
+                if (string.IsNullOrWhiteSpace(fileLocation))
+                {
+                    return;
+                }
+                ISingleMouse newFile = ModelResolver.Resolve<ISingleMouse>();
             newFile.AddFile(GetSingleFile(fileLocation));
             newFile.Name = Path.GetFileNameWithoutExtension(fileLocation);
             newFile.Reviewed = "Video Has not been reviewed";
 
             SingleMouseViewModel viewModel = new SingleMouseViewModel(newFile);
 
-            ObservableCollection<SingleMouseViewModel> currentList = new ObservableCollection<SingleMouseViewModel>(TgItemsSource);
+            
             currentList.Add(viewModel);
+            }
+            
+
+
+            
             TgItemsSource = currentList;
         }
 
@@ -345,9 +351,14 @@ namespace ARWT.ViewModel.BatchProcess
 
         private void RemoveTgFile()
         {
-            TgItemsSource.Remove(SelectedTgItem);
-            NotifyPropertyChanged("TgItemsSource");
-            BatchSettingsCommand.RaiseCanExecuteChangedNotification();
+
+            SingleMouseViewModel[] items = GetSelectedViewModels();
+            for(int i = 0; i< items.Length; i++)
+            {
+                TgItemsSource.Remove(items[i]);
+                NotifyPropertyChanged("TgItemsSource");
+                BatchSettingsCommand.RaiseCanExecuteChangedNotification();
+            }
         }
 
         private bool CanRemoveTgFile()
@@ -649,32 +660,7 @@ namespace ARWT.ViewModel.BatchProcess
             }
         }
 
-        //private void Closing(object args)
-        //{
-        //    if (!Running)
-        //    {
-        //        return;
-        //    }
-
-        //    var result = MessageBox.Show("The program is currently running, are you sure you want to cancel it?", "Batch Running", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-        //    if (result == MessageBoxResult.Yes)
-        //    {
-        //        IEnumerable<SingleMouseViewModel> allMice = TgItemsSource.Concat(NtgItemsSource);
-        //        foreach (SingleMouseViewModel mouse in allMice)
-        //        {
-        //            mouse.Stop = true;
-        //        }
-        //        Running = false;
-        //        return;
-        //    }
-
-        //    CancelEventArgs cancelEventArgs = args as CancelEventArgs;
-        //    if (cancelEventArgs != null)
-        //    {
-        //        cancelEventArgs.Cancel = true;
-        //    }
-        //}
+        
 
         private void LoadOutputFolder()
         {
@@ -735,11 +721,11 @@ namespace ARWT.ViewModel.BatchProcess
             {
                 return;
             }
-
+            
             foreach (SingleMouseViewModel mouse in selectedModels)
             {
-                mouse.WhiskerSettings = viewModel.WhiskerSettings;
-                mouse.FootSettings = viewModel.FootVideoSettings;
+                setWhiskers(viewModel, mouse);
+                setFeet(viewModel, mouse);
                 mouse.GapDistance = viewModel.GapDistance;
                 mouse.ThresholdValue = viewModel.BinaryThreshold;
                 mouse.ThresholdValue2 = viewModel.BinaryThreshold2;
@@ -747,6 +733,29 @@ namespace ARWT.ViewModel.BatchProcess
                 mouse.FrameRate = viewModel.FrameRate;
                 mouse.ROI = viewModel.ROI;
             }
+        }
+
+        private static void setFeet(SettingsViewModel viewModel, SingleMouseViewModel mouse)
+        {
+            mouse.FootSettings.area = viewModel.FootVideoSettings.area;
+            mouse.FootSettings.contourDistance = viewModel.FootVideoSettings.contourDistance;
+            mouse.FootSettings.scaleFactor = viewModel.FootVideoSettings.scaleFactor;
+            mouse.FootSettings.kernelSize = viewModel.FootVideoSettings.kernelSize;
+            mouse.FootSettings.track = viewModel.FootVideoSettings.track;
+        }
+
+        private static void setWhiskers(SettingsViewModel viewModel, SingleMouseViewModel mouse)
+        {
+            mouse.WhiskerSettings.CropScaleFactor = viewModel.WhiskerSettings.CropScaleFactor;
+            mouse.WhiskerSettings.RepeatSmooths = viewModel.WhiskerSettings.RepeatSmooths;
+            mouse.WhiskerSettings.InterpolationType = viewModel.WhiskerSettings.InterpolationType;
+            mouse.WhiskerSettings.LineMinIntensity = viewModel.WhiskerSettings.LineMinIntensity;
+            mouse.WhiskerSettings.LowerBound = viewModel.WhiskerSettings.LowerBound;
+            mouse.WhiskerSettings.OrientationResolution = viewModel.WhiskerSettings.OrientationResolution;
+            mouse.WhiskerSettings.RemoveDuds = viewModel.WhiskerSettings.RemoveDuds;
+            mouse.WhiskerSettings.ResolutionIncreaseScaleFactor = viewModel.WhiskerSettings.ResolutionIncreaseScaleFactor;
+            mouse.WhiskerSettings.UpperBound = viewModel.WhiskerSettings.UpperBound;
+            mouse.WhiskerSettings.track = viewModel.WhiskerSettings.track;
         }
 
         private SingleMouseViewModel[] GetSelectedViewModels()

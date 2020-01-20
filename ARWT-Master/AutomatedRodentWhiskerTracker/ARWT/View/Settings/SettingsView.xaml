@@ -96,14 +96,18 @@
                         <Button Content="Set" Command="{Binding Path=SetRoiCommand}"/>
                         <Button Content="Remove" Command="{Binding Path=RemoveRoiCommand}"/>
                     </StackPanel>
+                    
+                    
 
                     <TextBlock Text="Whiskers: " Grid.Row="6" Grid.Column="0"/>
                     <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1">
                         <Button Content="Settings" Command="{Binding Path=WhiskerSettingsCommand}"/>
+                        <CheckBox IsChecked="{Binding Path=trackWhiskers, Mode=TwoWay}" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" Margin="2"/>
                     </StackPanel>
                     <TextBlock Text="Feet: " Grid.Row="7" Grid.Column="0"/>
                     <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="1">
                         <Button Content="Settings" Command="{Binding Path=FeetSettingsCommand}"/>
+                        <CheckBox IsChecked="{Binding Path=trackFeet, Mode=TwoWay}" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" Margin="2"/>
                     </StackPanel>
                 </Grid>
             </Border>

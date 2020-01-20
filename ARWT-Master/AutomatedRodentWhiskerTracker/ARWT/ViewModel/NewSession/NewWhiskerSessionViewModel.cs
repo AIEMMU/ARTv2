@@ -564,22 +564,8 @@ namespace ARWT.ViewModel.NewSession
             MaxFrame = Video.FrameCount - 1;
             FrameNumber = 0;
             WhiskerSettings = ModelResolver.Resolve<IWhiskerVideoSettings>();
-            WhiskerSettings.AssignDefaultValues();
-            video.WhiskerSettings = WhiskerSettings;
-            video.FootSettings = FootSettings;
-            /*
-            if (video.WhiskerSettings == null)
-            {
-                WhiskerSettings = ModelResolver.Resolve<IWhiskerVideoSettings>();
-                WhiskerSettings.AssignDefaultValues();
-                video.WhiskerSettings = WhiskerSettings;
-                video.FootSettings = FootSettings;
-            }
-            else
-            {
-                WhiskerSettings = video.WhiskerSettings;
-                FootSettings = video.FootSettings;
-            }*/
+            WhiskerSettings = Rbsk.WhiskerSettings;
+           
         }
 
         private void UpdateFrameNumber(int frameNumber)
