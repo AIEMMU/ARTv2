@@ -539,6 +539,7 @@ namespace ARWT.ViewModel.Datasets
             FootSettings.AssignDefaultValues();
         }
 
+
         public void UpdateProgress(ISingleFile file, double progress)
         {
             int fileCount = ProgressDictionary.Count;
