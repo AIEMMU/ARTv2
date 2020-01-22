@@ -613,7 +613,7 @@ namespace ARWT.ViewModel.Datasets
 
                 ArtFile = artFile;
 
-                if (File.Exists(artFile))
+                /*if (File.Exists(artFile))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(TrackedVideoWithSettingsXml));
                     TrackedVideoWithSettingsXml trackedVideoXml;
@@ -663,7 +663,7 @@ namespace ARWT.ViewModel.Datasets
 
                     UpdateProgress(file, 1);
                     continue;
-                }
+                }*/
 
                 try
                 {

@@ -722,7 +722,7 @@ namespace ARWT.ViewModel.BatchProcess
                 return;
             }
             
-            foreach (SingleMouseViewModel mouse in TgItemsSource)
+            foreach (SingleMouseViewModel mouse in TgItemsSource.ToArray())
             {
                 setWhiskers(viewModel, mouse);
                 setFeet(viewModel, mouse);
