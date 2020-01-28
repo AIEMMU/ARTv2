@@ -576,6 +576,202 @@ namespace ARWT.ViewModel.Datasets
             get;
             set;
         }
+        public void LoadFiles(string outputLocation)
+        {
+            if (!string.IsNullOrWhiteSpace(outputLocation))
+            {
+                if (!outputLocation.EndsWith("\\"))
+                {
+                    outputLocation += "\\";
+                }
+            }
+
+            Rbsk = new ConcurrentBag<IRBSKVideo2>();
+            ConcurrentDictionary<ISingleFile, IMouseDataExtendedResult> allResults = new ConcurrentDictionary<ISingleFile, IMouseDataExtendedResult>();
+            List<ISingleFile> files = VideoFiles;
+            foreach (var file in files)
+            {
+                IMouseDataExtendedResult result = ModelResolver.Resolve<IMouseDataExtendedResult>();
+                result.Name = file.VideoFileName;
+                result.Type = Type;
+
+                ISaveArtFile save = ModelResolver.Resolve<ISaveArtFile>();
+                string artFile;
+                string videoFile = file.VideoFileName;
+                if (string.IsNullOrWhiteSpace(outputLocation))
+                {
+                    string extension = Path.GetExtension(videoFile);
+                    artFile = videoFile.Replace(extension, ".arwt");
+                }
+                else
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(videoFile);
+                    fileName += ".arwt";
+                    artFile = outputLocation + fileName;
+                }
+
+                ArtFile = artFile;
+
+                if (File.Exists(artFile))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(TrackedVideoWithSettingsXml));
+                    TrackedVideoWithSettingsXml trackedVideoXml;
+
+                    try
+                    {
+                        using (StreamReader reader = new StreamReader(artFile))
+                        {
+                            trackedVideoXml = (TrackedVideoWithSettingsXml)serializer.Deserialize(reader);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        using (StreamReader reader = new StreamReader(artFile))
+                        {
+                            XmlSerializer serializer2 = new XmlSerializer(typeof(TrackedVideoXml));
+                            trackedVideoXml = new TrackedVideoWithSettingsXml((TrackedVideoXml)serializer2.Deserialize(reader));
+                        }
+                    }
+
+                    ITrackedVideo trackedVideo = trackedVideoXml.GetData();
+                    
+                    result.Boundaries = trackedVideo.Boundries;
+                    result.VideoOutcome = trackedVideo.Result;
+                    result.GapDistance = trackedVideo.GapDistance;
+                    result.WhiskerSettings = trackedVideo.WhiskerSettings;
+                    result.FootSettings = trackedVideo.FootSettings;
+                    result.ThresholdValue = trackedVideo.ThresholdValue;
+                    result.ThresholdValue2 = trackedVideo.ThresholdValue2;
+                    result.StartFrame = trackedVideo.StartFrame;
+                    result.EndFrame = trackedVideo.EndFrame;
+                    result.SmoothMotion = trackedVideo.SmoothMotion;
+                    result.FrameRate = trackedVideo.FrameRate;
+                    result.UnitsToMilimeters = trackedVideo.UnitsToMilimeters;
+                    result.SmoothFactor = 0.68;
+                    result.GenerateResults(artFile);
+                    result.ROI = trackedVideo.ROI;
+                    result.PelvicArea = trackedVideo.PelvicArea1;
+                    result.PelvicArea2 = trackedVideo.PelvicArea2;
+                    result.PelvicArea3 = trackedVideo.PelvicArea3;
+                    result.PelvicArea4 = trackedVideo.PelvicArea4;
+                    result.Results = trackedVideo.Results;
+                    result.GenerateResults();
+                    result.DataLoadComplete();
+                    
+                    allResults.TryAdd(file, result);
+
+                    UpdateProgress(file, 1);
+                    continue;
+                }
+
+                /*try
+                {
+                    IVideoSettings videoSettings = ModelResolver.Resolve<IVideoSettings>();
+                    using (IRBSKVideo2 rbskVideo = ModelResolver.Resolve<IRBSKVideo2>())
+                    using (IVideo video = ModelResolver.Resolve<IVideo>())
+                    {
+                        Rbsk.Add(rbskVideo);
+                        video.SetVideo(file.VideoFileName);
+                        if (video.FrameCount <= 100)
+                        {
+                            result.VideoOutcome = SingleFileResult.FrameCountTooLow;
+                            result.Message = "Exception: " + file.VideoFileName + " - Frame count too low";
+                            allResults.TryAdd(file, result);
+                            UpdateProgress(file, 1);
+                            save.SaveFile(artFile, videoFile, result);
+                            continue;
+                        }
+
+                        result.FrameRate = video.FrameRate;
+                        video.SetFrame(0);
+
+                        videoSettings.FileName = file.VideoFileName;
+                        videoSettings.ThresholdValue = ThresholdValue;
+                        videoSettings.Roi = ROI;
+                        Image<Gray, Byte> binaryBackground;
+                        IEnumerable<IBoundaryBase> boundaries;
+                        videoSettings.GeneratePreview(video, out binaryBackground, out boundaries);
+                        result.Boundaries = boundaries.ToArray();
+
+                        rbskVideo.Video = video;
+                        rbskVideo.GapDistance = GapDistance;
+                        rbskVideo.BackgroundImage = binaryBackground;
+                        rbskVideo.ThresholdValue = ThresholdValue;
+                        rbskVideo.ThresholdValue2 = ThresholdValue2;
+                        rbskVideo.Roi = ROI;
+                        rbskVideo.WhiskerSettings = WhiskerSettings;
+                        rbskVideo.FootSettings = FootSettings;
+                        rbskVideo.FindWhiskers = WhiskerSettings.track;
+                        rbskVideo.FindFoot = FootSettings.track;
+                        rbskVideo.ProgressUpdates += (s, e) => UpdateProgress(file, e.Progress);
+                        rbskVideo.Process();
+
+                        if (Stop)
+                        {
+                            return;
+                        }
+
+                        result.GapDistance = rbskVideo.GapDistance;
+                        result.WhiskerSettings = rbskVideo.WhiskerSettings;
+                        result.FootSettings = rbskVideo.FootSettings;
+                        result.MinInteractionDistance = 15;
+                        result.ThresholdValue = rbskVideo.ThresholdValue;
+                        result.ThresholdValue2 = rbskVideo.ThresholdValue2;
+                        //result.WhiskerSettings = WhiskerSettings;
+                        result.FootSettings = rbskVideo.FootSettings;
+                        result.Results = rbskVideo.HeadPoints;
+                        result.ResetFrames();
+                        //result.FrameRate = FrameRate;
+                        result.SmoothMotion = SmoothMotion;
+                        result.ROI = ROI;
+                        result.GenerateResults();
+                        result.VideoOutcome = SingleFileResult.Ok;
+                        result.DataLoadComplete();
+                        allResults.TryAdd(file, result);
+
+                        save.SaveFile(artFile, videoFile, result);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.StackTrace);
+                    Console.WriteLine(e.Message);
+                    result.VideoOutcome = SingleFileResult.Error;
+                    result.Message = "Exception: " + file.VideoFileName + " - " + e.Message + " - " + e.StackTrace;
+                    result.DataLoadComplete();
+                    allResults.TryAdd(file, result);
+                    UpdateProgress(file, 1);
+                    save.SaveFile(artFile, videoFile, result);
+                }*/
+
+                if (Cancel)
+                {
+                    break;
+                }
+
+                if (Stop)
+                {
+                    return;
+                }
+            }
+
+            if (Stop)
+            {
+                return;
+            }
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                try
+                {
+                    Results = allResults.ToDictionary(x => x.Key, x => x.Value);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error in single mouse viewmodel!!! " + e.InnerException);
+                }
+            });
+        }
 
         public void RunFiles(string outputLocation)
         {

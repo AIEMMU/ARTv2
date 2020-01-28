@@ -76,3 +76,4 @@ D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Debug\ArtLibrary.csproj.CoreC
 D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Debug\ArtLibrary.csproj.CopyComplete
 D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Debug\ArtLibrary.dll
 D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Debug\ArtLibrary.pdb
+D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Debug\ArtLibrary.csprojAssemblyReference.cache

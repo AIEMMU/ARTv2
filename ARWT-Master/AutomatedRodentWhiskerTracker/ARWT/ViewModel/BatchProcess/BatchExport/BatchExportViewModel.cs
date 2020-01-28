@@ -1132,7 +1132,7 @@ namespace ARWT.ViewModel.BatchProcess.BatchExport
             bool isNull = false;
             foreach (SingleMouseViewModel mouse in Videos)
             {
-                if (mouse.Results != null)
+                if (mouse.Results.Count!=0)
                 {
                     mice.AddRange(from video in mouse.VideoFiles let result = mouse.Results[video] select new MouseHolder() { Age = mouse.Age.ToString(), Class = mouse.Class, File = video.VideoFileName, Mouse = mouse, Result = result, Type = mouse.Type.Name });
                 }

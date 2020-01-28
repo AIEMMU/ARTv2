@@ -432,7 +432,55 @@ namespace ARWT.ViewModel.BatchProcess
                 }
             }
         }
+        private void LoadVideo()
+        {
+            IEnumerable<SingleMouseViewModel> allMice = TgItemsSource;
+            List<string> errorMsgs = new List<string>();
+            //Parallel.ForEach(allMice, new ParallelOptions() {MaxDegreeOfParallelism = DegreesOfParallel }, (mouse, state) =>
+            foreach (SingleMouseViewModel mouse in allMice)
+            {
+                if (!Running)
+                {
+                    return;
+                }
 
+
+                CheckRunning = true;
+                Task.Factory.StartNew(() => mouse.LoadFiles(OutputFolder)).ContinueWith(x =>
+                {
+                    if (x.Status != TaskStatus.RanToCompletion)
+                    {
+                        errorMsgs.Add(mouse.Videos[0]);
+                    }
+
+                    CheckRunning = false;
+                });
+
+                while (CheckRunning)
+                {
+
+                }
+
+            }//);
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                StringBuilder sb = new StringBuilder();
+                if (errorMsgs.Any())
+                {
+                    sb.AppendLine("The following videos encountered errors");
+                    foreach (string error in errorMsgs)
+                    {
+                        sb.AppendLine(error);
+                    }
+
+                    MessageBox.Show(sb.ToString());
+
+                }
+                Running = false;
+                //ExportAll();
+            });
+        }
         private void RunVideo()
         {
             IEnumerable<SingleMouseViewModel> allMice = TgItemsSource;
@@ -578,10 +626,7 @@ namespace ARWT.ViewModel.BatchProcess
             }
         }
 
-        private bool CanProcessVideos()
-        {
-            return !Running;
-        }
+        
 
         private void ProcessVideos()
         {
@@ -608,7 +653,29 @@ namespace ARWT.ViewModel.BatchProcess
                 Running = false;
             }
         }
+        private bool CanProcessVideos()
+        {
+            return !Running;
+        }
 
+        private void LoadVideos()
+        {
+            if (!Running)
+            {
+                ResetProgress();
+
+                Running = true;
+                Task.Factory.StartNew(LoadVideo).ContinueWith(x =>
+                {
+                    if (x.IsFaulted) throw x.Exception;
+                });
+            }
+            else
+            {
+                Continue = false;
+                Running = false;
+            }
+        }
         private void ResetProgress()
         {
             foreach (var mouse in TgItemsSource)
@@ -675,10 +742,9 @@ namespace ARWT.ViewModel.BatchProcess
             }
 
             OutputFolder = folderLocation;
-            //repo.SetValue("OutputFolderLocation", folderLocation);
-            //repo.Save();
+            
 
-            ProcessVideos();
+            LoadVideos();
             
             ExportAllCommand.RaiseCanExecuteChangedNotification();
         }
