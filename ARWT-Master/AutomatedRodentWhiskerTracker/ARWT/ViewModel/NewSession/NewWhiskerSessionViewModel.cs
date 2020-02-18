@@ -581,9 +581,11 @@ namespace ARWT.ViewModel.NewSession
             WorkingImage = Video.GetGrayFrameImage();
             PointF[] headPoints;
             Point[] bodyPoints;
-            Rbsk.Roi = _Rbsk.Roi;
+
+            //WorkingImage.ROI = Rbsk.Roi;
+            //Rbsk.Roi = _Rbsk.Roi;
             Rbsk.GetHeadAndBody(WorkingImage.Convert<Bgr, byte>(), out headPoints, out bodyPoints);
-            
+            Rbsk.Roi = _Rbsk.Roi; //MAY NEED TO CHANGE THIS 
             HeadPoints = headPoints;
             if (headPoints == null)
             {

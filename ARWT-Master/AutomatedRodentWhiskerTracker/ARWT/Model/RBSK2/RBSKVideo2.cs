@@ -508,8 +508,9 @@ namespace ARWT.Model.RBSK2
             IEnumerable<float> centroidY = HeadPoints.Select(x => x.Value.Centroid.Y);
             int frameCounter = 100;
             int angleCounter = 0;
+            
             double width = Video.Width;
-            double hight = Video.Height;
+            double hight =Video.Height;
             bool notHit = false;
             List<double> angles = new List<double>();
             for(int i = frameCounter; i<centroidX.Count(); i += frameCounter)
@@ -553,11 +554,16 @@ namespace ARWT.Model.RBSK2
                 {
                     bodyContourAngle = Math.Atan2(currentFrame.MidPoint.Y - currentFrame.Centroid.Y, currentFrame.MidPoint.X - currentFrame.Centroid.X) * 180 / Math.PI;
                 }
-                
 
+
+
+                // Console.WriteLine(counter);
                 Image<Bgr, byte> frame = Video.GetFrameImage();
-               // Console.WriteLine(counter);
-                
+                if (!Roi.IsEmpty)
+                {
+                    frame.ROI = Roi;
+
+                }
                 var mask = MaskSegmentation.segmentMask(currentFrame.BodyContour, ColorSpaceProcessing.processLogSpace(frame.Clone()).Convert<Bgr, double>(), FootSettings.kernelSize, FootSettings.erosionIterations);
                 var moo2oo = ColorSpaceProcessing.processLogSpace(frame.Clone()).Convert<Bgr, double>(); 
                 //CvInvoke.Imwrite($"log_{i:D4}.png", moo2oo);
@@ -573,7 +579,7 @@ namespace ARWT.Model.RBSK2
                     if (CvInvoke.ContourArea(c) > FootSettings.area)
                     {
                         var rect = CvInvoke.BoundingRectangle(c);
-                        footplacement.Add(new FootPlacement { minX = rect.X, minY = rect.Y, maxX = rect.X + rect.Width, maxY = rect.Y + rect.Height, width= rect.Width, height = rect.Height });
+                        footplacement.Add(new FootPlacement { minX = rect.X+Roi.X, minY = rect.Y+Roi.Y, maxX = rect.X + rect.Width, maxY = rect.Y + rect.Height, width= rect.Width, height = rect.Height });
                         frame.Draw(rect, new Bgr(Color.Aquamarine));
 
                     }
@@ -589,13 +595,13 @@ namespace ARWT.Model.RBSK2
                 //headPoint.X = Convert.ToInt32(currentFrame.MidPoint.X);
                 //headPoint.Y = Convert.ToInt32(currentFrame.MidPoint.Y);
                 //}
-                CvInvoke.Line(frame, backPoint, headPoint, new MCvScalar(255, 255, 0), 2);
-                CvInvoke.Circle(frame, headPoint, 8, new MCvScalar(255, 255, 0), 2);
-                CvInvoke.Circle(frame, backPoint, 8, new MCvScalar(255, 255, 0), 2);
-                CvInvoke.Circle(frame, new Point(Convert.ToInt32(currentFrame.MidPoint.X), Convert.ToInt32(currentFrame.MidPoint.Y)), 8, new MCvScalar(255, 0, 0), 2);
-                CvInvoke.Circle(frame, new Point(Convert.ToInt32(currentFrame.Centroid.X), Convert.ToInt32(currentFrame.Centroid.Y)), 8, new MCvScalar(255, 0, 255), 2);
-                CvInvoke.Circle(frame, new Point(Convert.ToInt32(currentFrame.Centroid.X * 4), Convert.ToInt32(currentFrame.Centroid.Y * 4)), 8, new MCvScalar(255, 0, 255), 2);
-                ////CvInvoke.Imwrite($"{i}_frame.png", frame);
+                //CvInvoke.Line(frame, backPoint, headPoint, new MCvScalar(255, 255, 0), 2);
+               // CvInvoke.Circle(frame, headPoint, 8, new MCvScalar(255, 255, 0), 2);
+               // CvInvoke.Circle(frame, backPoint, 8, new MCvScalar(255, 255, 0), 2);
+                //CvInvoke.Circle(frame, new Point(Convert.ToInt32(currentFrame.MidPoint.X), Convert.ToInt32(currentFrame.MidPoint.Y)), 8, new MCvScalar(255, 0, 0), 2);
+                //CvInvoke.Circle(frame, new Point(Convert.ToInt32(currentFrame.Centroid.X), Convert.ToInt32(currentFrame.Centroid.Y)), 8, new MCvScalar(255, 0, 255), 2);
+               // CvInvoke.Circle(frame, new Point(Convert.ToInt32(currentFrame.Centroid.X * 4), Convert.ToInt32(currentFrame.Centroid.Y * 4)), 8, new MCvScalar(255, 0, 255), 2);
+                //CvInvoke.Imwrite($"{i}_frame.png", frame);
 
                 List<IfeetID> objects = feetCentroids.update(footplacement.ToArray(), centrePoint, headPoint, backPoint, currentFrame.BodyContour);
                // IFootCollection footCollection = ModelResolver.Resolve<IFootCollection>();

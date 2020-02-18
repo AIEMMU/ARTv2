@@ -91,11 +91,11 @@
                     <TextBlock Text="Frame Rate: " Grid.Row="4" Grid.Column="0"/>
                     <TextBox Text="{Binding Path=FrameRate, Mode=TwoWay}" Grid.Row="4" Grid.Column="1"/>
 
-                    <TextBlock Text="ROI: " Grid.Row="5" Grid.Column="0"/>
+                    <!--<TextBlock Text="ROI: " Grid.Row="5" Grid.Column="0"/>
                     <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
                         <Button Content="Set" Command="{Binding Path=SetRoiCommand}"/>
                         <Button Content="Remove" Command="{Binding Path=RemoveRoiCommand}"/>
-                    </StackPanel>
+                    </StackPanel>-->
                     
                     
 

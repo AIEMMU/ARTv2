@@ -1812,6 +1812,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
             videoSettings.ThresholdValue = BinaryThreshold;
             videoSettings.Roi = Results[SelectedVideo.Model].ROI;
             Image<Gray, Byte> binaryBackground;
+
             IEnumerable<IBoundaryBase> boundaries;
             videoSettings.GeneratePreview(Video, out binaryBackground, out boundaries);
             
@@ -1821,6 +1822,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
             rbsk.ThresholdValue = BinaryThreshold;
             rbsk.Video = Video;
             rbsk.BackgroundImage = binaryBackground;
+            rbsk.BackgroundImage.ROI = ROI;
             rbsk.Roi = Results[SelectedVideo.Model].ROI;
             rbsk.WhiskerSettings = WhiskerSettings;
             rbsk.FootSettings = FootSettings;
@@ -2096,6 +2098,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
                 m_GapDistance = CurrentResult.GapDistance;
                 WhiskerSettings = CurrentResult.WhiskerSettings;
                 FootSettings = CurrentResult.FootSettings;
+                ROI = CurrentResult.ROI;
                 if(FootSettings == null ||  FootSettings.kernelSize == 0 && FootSettings.contourDistance == 0 && FootSettings.scaleFactor == 0 && FootSettings.erosionIterations == 0)
                 {
                     FootSettings = new FootVideoSettings();
@@ -2440,7 +2443,7 @@ namespace ARWT.ViewModel.BatchProcess.Review
                     using (IVideo video = ModelResolver.Resolve<IVideo>())
                     {
                         RbskVideo = rbskVideo;
-                        ROI = rbskVideo.Roi;
+                      //  ROI = rbskVideo.Roi;
                         video.SetVideo(fileName);
                         if (video.FrameCount < 100)
                         {
@@ -2467,6 +2470,12 @@ namespace ARWT.ViewModel.BatchProcess.Review
 
                         rbskVideo.Video = video;
                         rbskVideo.BackgroundImage = binaryBackground;
+                        rbskVideo.BackgroundImage.ROI = ROI;
+                        rbskVideo.FindWhiskers = IncludeWhiskers;
+                        rbskVideo.FindFoot = IncludeFeet;
+                        rbskVideo.WhiskerSettings = WhiskerSettings;
+                        rbskVideo.Roi = ROI;
+                        rbskVideo.FootSettings = FootSettings;
 
                         rbskVideo.ProgressUpdates += (s, e) =>
                         {
@@ -2481,11 +2490,9 @@ namespace ARWT.ViewModel.BatchProcess.Review
                             });
                         };
 
-                        rbskVideo.FindWhiskers = IncludeWhiskers;
-                        rbskVideo.FindFoot = IncludeFeet;
-                        rbskVideo.WhiskerSettings = WhiskerSettings;
-                        rbskVideo.FootSettings = FootSettings;
+                        
                         rbskVideo.Process();
+                        //rbskVideo.Roi = ROI;
                         RbskVideo = null;
                         //if (Stop)
                         //{

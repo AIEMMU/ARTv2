@@ -975,7 +975,7 @@ namespace ARWT.ViewModel.Settings
             IVideoSettings videoSettings = ModelResolver.Resolve<IVideoSettings>();
             videoSettings.FileName = SelectedMouse.VideoFileName;
             videoSettings.ThresholdValue = BinaryThreshold;
-            videoSettings.Roi = ROI;
+            videoSettings.Roi = ROI; 
             Image<Gray, Byte> binaryBackground;
             IEnumerable<IBoundaryBase> boundaries;
             videoSettings.GeneratePreview(Video, out binaryBackground, out boundaries);

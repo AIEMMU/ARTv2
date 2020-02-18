@@ -72,8 +72,8 @@ D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\bin\x64\Debug\Emgu.CV.UI.dll
 D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\bin\x64\Debug\Emgu.CV.UI.GL.dll
 D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\bin\x64\Debug\Emgu.CV.World.dll
 D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\bin\x64\Debug\Emgu.UI.dll
+D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Debug\ArtLibrary.csprojAssemblyReference.cache
 D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Debug\ArtLibrary.csproj.CoreCompileInputs.cache
 D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Debug\ArtLibrary.csproj.CopyComplete
 D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Debug\ArtLibrary.dll
 D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Debug\ArtLibrary.pdb
-D:\art-v2\ArtLibrary\ArtLibrary\ArtLibrary\obj\x64\Debug\ArtLibrary.csprojAssemblyReference.cache
