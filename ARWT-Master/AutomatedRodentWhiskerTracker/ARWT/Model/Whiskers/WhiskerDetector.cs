@@ -1384,6 +1384,11 @@ namespace ARWT.Model.Whiskers
 
         private void AddDistanceImages(int lowerBound, int upperBound, List<Image<Gray, byte>> listLeft, List<ILine> gaborListLeft, Image<Gray, byte> gfLeft, List<Image<Gray, byte>> listRight, List<ILine> gaborListRight, Image<Gray, byte> gfRight, List<Point> midListLeft, List<Point> midListRight)
         {
+            if(upperBound > gaborListLeft.Count)
+            {
+                upperBound = gaborListLeft.Count;
+            }
+
             for (int i = lowerBound; i < upperBound; i++)
             {
                 listLeft.Add(gaborListLeft[i].MaskImage.And(gfLeft));
