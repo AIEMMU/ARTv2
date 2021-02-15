@@ -119,6 +119,86 @@ namespace ARWT.Model.Analysis
             }
         }
 
+        private double _RightMaxAngle;
+        public double RightMaxAngle
+        {
+            get
+            {
+                return _RightMaxAngle;
+            }
+            set
+            {
+                if (Equals(_RightMaxAngle, value))
+                {
+                    return;
+                }
+
+                _RightMaxAngle = value;
+
+                MarkAsDirty();
+            }
+        }
+
+        private double _RightMinAngle;
+        public double RightMinAngle
+        {
+            get
+            {
+                return _RightMinAngle;
+            }
+            set
+            {
+                if (Equals(_RightMinAngle, value))
+                {
+                    return;
+                }
+
+                _RightMinAngle = value;
+
+                MarkAsDirty();
+            }
+        }
+        private double _LeftMaxAngle;
+        public double LeftMaxAngle
+        {
+            get
+            {
+                return _LeftMaxAngle;
+            }
+            set
+            {
+                if (Equals(_LeftMaxAngle, value))
+                {
+                    return;
+                }
+
+                _LeftMaxAngle = value;
+
+                MarkAsDirty();
+            }
+        }
+
+        private double _LeftMinAngle;
+        public double LeftMinAngle
+        {
+            get
+            {
+                return _LeftMinAngle;
+            }
+            set
+            {
+                if (Equals(_LeftMinAngle, value))
+                {
+                    return;
+                }
+
+                _LeftMinAngle = value;
+
+                MarkAsDirty();
+            }
+        }
+
+
 
         private ISmoothingBase _SmoothingFunction;
         public ISmoothingBase SmoothingFunction
@@ -566,12 +646,16 @@ namespace ARWT.Model.Analysis
                 LeftWhiskerFrequency = lefFequency;
                 LeftRMS = spread[0];
                 LeftSTD = SmoothingFunctions.GetSTD(leftSignal);
+                LeftMaxAngle = leftSignal.Max();
+                LeftMinAngle = leftSignal.Min();
             }
             else
             {
                 LeftWhiskerFrequency = 0;
                 LeftRMS = 0;
                 LeftSTD = 0;
+                LeftMaxAngle = 0.0;
+                LeftMinAngle = 0.0;
             }
 
             if (goRight)
@@ -585,10 +669,14 @@ namespace ARWT.Model.Analysis
                 RightWhiskerFrequnecy = rightFrequency;
                 RightRMS = spread[1];// SmoothingFunctions.GetRMS(rightSignal);
                 RightSTD = SmoothingFunctions.GetSTD(rightSignal);
+                RightMaxAngle = rightSignal.Max();
+                RightMinAngle = rightSignal.Min();
             }
             else
             {
                 RightWhiskerFrequnecy = 0;
+                RightMaxAngle = 0.0;
+                RightMinAngle = 0.0;
             }
             
 
