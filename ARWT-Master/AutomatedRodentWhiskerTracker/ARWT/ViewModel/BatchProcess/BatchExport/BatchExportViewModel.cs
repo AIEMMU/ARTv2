@@ -1058,7 +1058,7 @@ namespace ARWT.ViewModel.BatchProcess.BatchExport
         private void GenerateAllResults()
         {
             int rows = Videos.Count + 10;
-            int columns = 27+4;
+            int columns = 27+10;
             object[,] data = new object[rows, columns];
 
             int rowCounter = 1;
@@ -1092,6 +1092,12 @@ namespace ARWT.ViewModel.BatchProcess.BatchExport
             data[0, 27] = "Right Whisker spread";
             data[0, 28] = "Left Whisker peak-to-peak amplitude";
             data[0, 29] = "Right Whisker peak-to-peak amplitude";
+
+            data[0, 30] = "Left Whisker Max Peak amplitude";
+            data[0, 31] = "Right Whisker Max Peak amplitude";
+
+            data[0, 32] = "Left Whisker Min Peak amplitude";
+            data[0, 33] = "Right Whisker Min Peak amplitude";
             //data[0, 26] = "Percentage Interacting";
 
             double maxVelocity = 0;
@@ -1663,6 +1669,10 @@ namespace ARWT.ViewModel.BatchProcess.BatchExport
                     data[rowCounter, 27] = rightRMS;
                     data[rowCounter, 28] = Math.Sqrt(2) * (2 * leftSTD);
                     data[rowCounter, 29] = Math.Sqrt(2) * (2 * rightSTD);
+                    data[rowCounter, 30] = stat.LeftMaxAngle;
+                    data[rowCounter, 31] = stat.RightMaxAngle;
+                    data[rowCounter, 32] = stat.LeftMinAngle;
+                    data[rowCounter, 33] = stat.RightMinAngle;
                     rowCounter++;
                     
                 }
