@@ -94,6 +94,7 @@ namespace ARWT.Model.Whiskers
                     continue;
                 }
 
+
                 if (result.Value.BestTrackedWhisker.LeftWhiskers == null || !result.Value.BestTrackedWhisker.LeftWhiskers.Any())
                 {
                     double angle;
@@ -103,6 +104,8 @@ namespace ARWT.Model.Whiskers
                     {
                         leftWhiskerAngles.Add(result.Key, 0);
                     }
+                }else if (result.Value.BestTrackedWhisker.LeftWhiskers.Length == 1){
+                    leftWhiskerAngles.Add(result.Key, 0);
                 }
                 else
                 {
@@ -121,6 +124,10 @@ namespace ARWT.Model.Whiskers
                         rightWhiskerAngles.Add(result.Key, 0);
                     }
                 }
+                else if (result.Value.BestTrackedWhisker.RightWhiskers.Length == 1)
+                {
+                    rightWhiskerAngles.Add(result.Key, 0);
+                }
                 else
                 {
                     double[] angles_ = result.Value.BestTrackedWhisker.RightWhiskers.Select(x => x.Angle).ToArray();
@@ -130,9 +137,15 @@ namespace ARWT.Model.Whiskers
 
                 counter++;
             }
+            double[] temp = rightWhiskerAngles.Select(c =>c.Value).ToArray();
+            temp = temp.Where(i => i > 0.0).ToArray();
+            spread[1] = rightWhiskerAngles.Count == 0 ? 0 : temp.Average();
+
+            temp = leftWhiskerAngles.Select(c => c.Value).ToArray();
+            temp = temp.Where(i => i > 0.0).ToArray();
+         
+            spread[0] = leftWhiskerAngles.Count == 0 ? 0 : temp.Average();
             
-            spread[0] = leftWhiskerAngles.Count == 0 ? 0 : leftWhiskerAngles.Average(x => x.Value);
-            spread[1] = rightWhiskerAngles.Count ==0 ? 0 : rightWhiskerAngles.Average(x => x.Value);
             return spread;
         }
 
