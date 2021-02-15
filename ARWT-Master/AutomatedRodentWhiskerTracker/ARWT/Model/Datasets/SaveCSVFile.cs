@@ -90,7 +90,7 @@ namespace ARWT.Model.Datasets
                     int bob = 0;
                 }
 
-                string whiskersData = processData(obj.Whiskers);
+                string whiskersData = processData(obj.BestTrackedWhisker);
                 string allWhiskerData = processData(obj.AllWhiskers);
                 //writing file
                 string moo = $"{whiskersData},{allWhiskerData}";
@@ -129,8 +129,8 @@ namespace ARWT.Model.Datasets
                     rightWhiskers = processMeanWhiskerData(WhiskersData.RightWhiskers);
                 }
                 //return $"\"[{leftWhiskers.Item1}]\",\"[{rightWhiskers.Item1}]\",\"[{leftWhiskers.Item2}]\",\"[{rightWhiskers.Item2}]\",\"[{leftWhiskers.Item3}]\",\"[{rightWhiskers.Item3}]\",\"[{leftWhiskers.Item4}]\",\"[{rightWhiskers.Item4}]\",\"[{leftWhiskers.Item5}]\",\"[{rightWhiskers.Item5}]\"";
-                string moo = $"{ leftWhiskers.Item1},{ leftWhiskers.Item2},{ rightWhiskers.Item1},{ rightWhiskers.Item2},{ leftWhiskers.Item3},{ rightWhiskers.Item3},{ leftWhiskers.Item4},{ rightWhiskers.Item4},{ leftWhiskers.Item5},{ rightWhiskers.Item5}";
-                return $"{leftWhiskers.Item1},{leftWhiskers.Item2},{rightWhiskers.Item1},{rightWhiskers.Item2},{leftWhiskers.Item3},{rightWhiskers.Item3},{leftWhiskers.Item4},{rightWhiskers.Item4},{leftWhiskers.Item5},{rightWhiskers.Item5}";
+                string moo = $"{ leftWhiskers.Item1},{ rightWhiskers.Item1},{ leftWhiskers.Item2},{ rightWhiskers.Item2},{ leftWhiskers.Item3},{ rightWhiskers.Item3},{ leftWhiskers.Item4},{ rightWhiskers.Item4},{ leftWhiskers.Item5},{ rightWhiskers.Item5}";
+                return $"{leftWhiskers.Item1},{rightWhiskers.Item1},{leftWhiskers.Item2},{rightWhiskers.Item2},{leftWhiskers.Item3},{rightWhiskers.Item3},{leftWhiskers.Item4},{rightWhiskers.Item4},{leftWhiskers.Item5},{rightWhiskers.Item5}";
             }
             return ",,,,,,,,,,,,,";
         }
