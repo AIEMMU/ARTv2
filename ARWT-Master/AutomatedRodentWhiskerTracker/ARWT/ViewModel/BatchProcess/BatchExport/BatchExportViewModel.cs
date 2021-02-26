@@ -1073,8 +1073,8 @@ namespace ARWT.ViewModel.BatchProcess.BatchExport
             data[0, 8] = "Max Centroid Velocity";
             data[0, 9] = "Left Whisker Frequency";
             data[0, 10] = "Right Whisker Frequency";
-            data[0, 11] = "Left Whisker Amplitude";
-            data[0, 12] = "Right Whisker Amplitude";
+            data[0, 11] = "Left Max Amplitude";
+            data[0, 12] = "Right Max Amplitude";
             data[0, 13] = "Left Whisker Mean Offset";
             data[0, 14] = "Right Whisker Mean Offset";
             data[0, 15] = "Left Whisker Average Angular Velocity";
@@ -1089,15 +1089,15 @@ namespace ARWT.ViewModel.BatchProcess.BatchExport
             data[0, 24] = "Percentage turning";
             data[0, 25] = "Percentage Still";
             data[0, 26] = "Left Whisker Spread";
-            data[0, 27] = "Right Whisker spread";
-            data[0, 28] = "Left Whisker peak-to-peak amplitude";
-            data[0, 29] = "Right Whisker peak-to-peak amplitude";
+            data[0, 27] = "Right Whisker Spread";
+            data[0, 28] = "Left Whisker Amplitude";
+            data[0, 29] = "Right Whisker Amplitude";
 
-            data[0, 30] = "Left Whisker Max Peak amplitude";
-            data[0, 31] = "Right Whisker Max Peak amplitude";
+            data[0, 30] = "Left Whisker Max Angles";
+            data[0, 31] = "Right Whisker Max Angles";
 
-            data[0, 32] = "Left Whisker Min Peak amplitude";
-            data[0, 33] = "Right Whisker Min Peak amplitude";
+            data[0, 32] = "Left Whisker Min Angles";
+            data[0, 33] = "Right Whisker Min Angles";
             //data[0, 26] = "Percentage Interacting";
 
             double maxVelocity = 0;
